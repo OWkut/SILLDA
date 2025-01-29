@@ -107,7 +107,9 @@ for frame in reader.nextFrame():
         break
 
     # Detection of the frame
-    frame.setflags(write=True)
+    if not frame.flags.writeable:
+        frame = frame.copy()
+
     detections = detector(frame, 1)
 
     # 20 mark for mouth
