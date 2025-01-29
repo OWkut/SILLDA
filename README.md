@@ -20,6 +20,7 @@ Voici l'organisation des fichiers et dossiers du projet :
 │   ├── feature_extraction/   # Code pour l'extraction des caractéristiques
 │   ├── lip_reading/          # Code pour la reconnaissance labiale
 │   ├── utils/                # Fonctions utilitaires (prétraitement, post-traitement)
+│   ├── webcam/               # Code pour l'utilisation de la webcam en temps reel
 │   └── app.py                # Script principal pour l'application
 ├── tests/                    # Tests unitaires et d'intégration
 ├── notebooks/                # Notebooks Jupyter pour l'expérimentation
