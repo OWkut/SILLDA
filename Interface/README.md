@@ -17,6 +17,7 @@ Avant d'exécuter l'interface, assure-toi d'avoir installé les bibliothèques s
 Si tu n'as pas encore installé les bibliothèques, exécute la commande suivante :
 ```sh
 pip install pyside6 matplotlib opencv-python
+sudo apt install libxcb-cursor0
 ```
 
 ---
