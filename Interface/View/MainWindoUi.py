@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QFrame,
 )
 from PySide6.QtGui import QImage, QPixmap
-from PySide6.QtCore import QTimer, Qt, QPropertyAnimation, QEasingCurve
+from PySide6.QtCore import QThread, QTimer, Qt, QPropertyAnimation, QEasingCurve
 import sys
 
 sys.path.append(
@@ -22,6 +22,7 @@ sys.path.append(
 )
 
 from WebcamHandler import WebcamHandler
+from SpeechTranscriber import SpeechTranscriber
 
 
 class MainWindowUi(QMainWindow):
@@ -71,10 +72,13 @@ class MainWindowUi(QMainWindow):
 
         self.toggle_webcam = QPushButton("Activer la webcam", self)
         self.toggle_webcam.setObjectName("toggle_webcam")
+        self.toggle_transcription = QPushButton("Activer la retranscription", self)
+        self.toggle_transcription.clicked.connect(self.start_transcription)
 
         # 🔹 Label pour retranscription
         self.restranscription_output = QLabel("RETRANSCRIPTION")
         self.content_layout.addWidget(self.toggle_webcam)
+        self.content_layout.addWidget(self.toggle_transcription)
         self.content_layout.addWidget(self.restranscription_output)
         self.btn_fps_graph = QPushButton("Afficher FPS", self)
         self.content_layout.addWidget(self.btn_fps_graph)
@@ -100,6 +104,12 @@ class MainWindowUi(QMainWindow):
             self.webcam, self.toggle_webcam, self.text_output
         )
         self.btn_fps_graph.clicked.connect(self.webcam_handler.open_fps_window)
+
+        self.transcriber = SpeechTranscriber()
+        self.transcription_thread = QThread()
+        self.transcriber.moveToThread(self.transcription_thread)
+
+        self.transcriber.transcribed_text.connect(self.update_transcription_output)
 
     def load_styles(self):
         """Charge le fichier QSS et applique les styles"""
@@ -127,3 +137,14 @@ class MainWindowUi(QMainWindow):
         self.menu.setFixedWidth(new_width)  # Mise à jour immédiate
 
         self.menu_open = not self.menu_open  # Inverser l'état du menu
+
+    def start_transcription(self):
+        """Lance la transcription dans un thread séparé"""
+        if not self.transcription_thread.isRunning():
+            self.transcription_thread.started.connect(self.transcriber.run)
+            self.transcription_thread.start()
+
+    def update_transcription_output(self, text):
+        """Met à jour l'affichage avec le texte transcrit"""
+        print(text)
+        self.restranscription_output.setText(text)
