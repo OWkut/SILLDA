@@ -15,6 +15,13 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QTimer, Qt, QPropertyAnimation, QEasingCurve
+import sys
+
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Classes"))
+)
+
+from WebcamHandler import WebcamHandler
 
 
 class MainWindowUi(QMainWindow):
@@ -52,6 +59,7 @@ class MainWindowUi(QMainWindow):
         self.toggle_menu_button = QPushButton("➡", self)
         self.toggle_menu_button.setFixedWidth(50)
         self.toggle_menu_button.clicked.connect(self.toggle_menu)
+
         # ========================= SECTION WEBCAM =========================
         self.content_layout = QVBoxLayout()
 
@@ -63,10 +71,13 @@ class MainWindowUi(QMainWindow):
 
         self.toggle_webcam = QPushButton("Activer la webcam", self)
         self.toggle_webcam.setObjectName("toggle_webcam")
-        self.toggle_webcam.clicked.connect(self.handle_toggle_webcam)
+
+        # 🔹 Label pour retranscription
         self.restranscription_output = QLabel("RETRANSCRIPTION")
         self.content_layout.addWidget(self.toggle_webcam)
         self.content_layout.addWidget(self.restranscription_output)
+        self.btn_fps_graph = QPushButton("Afficher FPS", self)
+        self.content_layout.addWidget(self.btn_fps_graph)
 
         # 🔹 Ajout des sections au layout principal
         self.main_layout.addWidget(self.menu)
@@ -76,11 +87,6 @@ class MainWindowUi(QMainWindow):
         self.main_widget.setLayout(self.main_layout)
         self.setCentralWidget(self.main_widget)
 
-        # 🔹 Timer pour la mise à jour de la vidéo
-        self.cap = None
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame)
-
         # 🔹 Animation pour afficher/réduire le menu
         self.animation = QPropertyAnimation(self.menu, b"minimumWidth")
         self.animation.setDuration(300)  # Durée de l'animation (ms)
@@ -88,6 +94,12 @@ class MainWindowUi(QMainWindow):
 
         # État du menu (fermé par défaut)
         self.menu_open = False
+
+        # ✅ Initialisation de la gestion de la webcam via WebcamHandler
+        self.webcam_handler = WebcamHandler(
+            self.webcam, self.toggle_webcam, self.text_output
+        )
+        self.btn_fps_graph.clicked.connect(self.webcam_handler.open_fps_window)
 
     def load_styles(self):
         """Charge le fichier QSS et applique les styles"""
@@ -115,35 +127,3 @@ class MainWindowUi(QMainWindow):
         self.menu.setFixedWidth(new_width)  # Mise à jour immédiate
 
         self.menu_open = not self.menu_open  # Inverser l'état du menu
-
-    def handle_toggle_webcam(self):
-        """Active ou désactive la webcam"""
-        if self.cap is None:
-            self.cap = cv2.VideoCapture(0)  # 0 = webcam
-            if not self.cap.isOpened():
-                self.text_output.appendPlainText(
-                    "❌ ERREUR : Impossible d'accéder à la webcam"
-                )
-                self.cap = None
-                return
-            self.timer.start(30)  # Rafraîchit toutes les 30 ms
-            self.toggle_webcam.setText("Désactiver la webcam")
-        else:
-            self.timer.stop()
-            self.cap.release()
-            self.cap = None
-            self.webcam.clear()
-            self.toggle_webcam.setText("Activer la webcam")
-
-    def update_frame(self):
-        """Capture l'image de la webcam et l'affiche dans le label"""
-        if self.cap is not None:
-            ret, frame = self.cap.read()
-            if ret:
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                h, w, ch = frame.shape
-                bytes_per_line = ch * w
-                qt_image = QImage(
-                    frame.data, w, h, bytes_per_line, QImage.Format_RGB888
-                )
-                self.webcam.setPixmap(QPixmap.fromImage(qt_image))
