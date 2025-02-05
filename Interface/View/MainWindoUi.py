@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QTimer, Qt, QPropertyAnimation, QEasingCurve
-
+from src.lip_tracking.VisualizeLip import LipTracking
 
 class MainWindowUi(QMainWindow):
     def __init__(self):
@@ -28,13 +28,13 @@ class MainWindowUi(QMainWindow):
 
         # 🔹 Widget central contenant la webcam et le menu
         self.main_widget = QWidget()
-        self.main_layout = QHBoxLayout()  # Disposition horizontale
+        self.main_layout = QHBoxLayout()  
         self.main_layout.setObjectName("main_widget")
 
         # ========================= MENU LATÉRAL =========================
-        self.menu_width = 250  # Largeur du menu ouvert
+        self.menu_width = 250  
         self.menu = QFrame(self)
-        self.menu.setFixedWidth(0)  # Caché au démarrage
+        self.menu.setFixedWidth(0)  
         self.menu.setObjectName("menu")
 
         # Layout du menu
@@ -45,13 +45,14 @@ class MainWindowUi(QMainWindow):
         # 🔹 Zone de texte (QPlainTextEdit)
         self.text_output = QPlainTextEdit(self)
         self.text_output.setPlaceholderText("Retranscription totale de l'audio")
-        self.text_output.setReadOnly(True)  # Empêche l'utilisateur d'éditer
+        self.text_output.setReadOnly(True)
         self.menu_layout.addWidget(self.text_output)
 
         # 🔹 Bouton pour masquer le menu
         self.toggle_menu_button = QPushButton("➡", self)
         self.toggle_menu_button.setFixedWidth(50)
         self.toggle_menu_button.clicked.connect(self.toggle_menu)
+
         # ========================= SECTION WEBCAM =========================
         self.content_layout = QVBoxLayout()
 
@@ -64,9 +65,13 @@ class MainWindowUi(QMainWindow):
         self.toggle_webcam = QPushButton("Activer la webcam", self)
         self.toggle_webcam.setObjectName("toggle_webcam")
         self.toggle_webcam.clicked.connect(self.handle_toggle_webcam)
+
         self.restranscription_output = QLabel("RETRANSCRIPTION")
+        self.lip_tracking_output = QLabel("Analyse des lèvres : Inactif")  # 🔹 Affichage des résultats du lip tracking
+        
         self.content_layout.addWidget(self.toggle_webcam)
         self.content_layout.addWidget(self.restranscription_output)
+        self.content_layout.addWidget(self.lip_tracking_output)  # 🔹 Ajout du label au layout
 
         # 🔹 Ajout des sections au layout principal
         self.main_layout.addWidget(self.menu)
@@ -81,9 +86,12 @@ class MainWindowUi(QMainWindow):
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_frame)
 
+        # 🔹 Initialisation du lip tracking
+        self.lip_tracker = LipTracking()
+
         # 🔹 Animation pour afficher/réduire le menu
         self.animation = QPropertyAnimation(self.menu, b"minimumWidth")
-        self.animation.setDuration(300)  # Durée de l'animation (ms)
+        self.animation.setDuration(300)  
         self.animation.setEasingCurve(QEasingCurve.InOutQuad)
 
         # État du menu (fermé par défaut)
@@ -112,38 +120,43 @@ class MainWindowUi(QMainWindow):
         self.animation.setStartValue(self.menu.width())
         self.animation.setEndValue(new_width)
         self.animation.start()
-        self.menu.setFixedWidth(new_width)  # Mise à jour immédiate
+        self.menu.setFixedWidth(new_width)  
 
-        self.menu_open = not self.menu_open  # Inverser l'état du menu
+        self.menu_open = not self.menu_open  
 
     def handle_toggle_webcam(self):
         """Active ou désactive la webcam"""
         if self.cap is None:
-            self.cap = cv2.VideoCapture(0)  # 0 = webcam
+            self.cap = cv2.VideoCapture(0)  
             if not self.cap.isOpened():
-                self.text_output.appendPlainText(
-                    "❌ ERREUR : Impossible d'accéder à la webcam"
-                )
+                self.text_output.appendPlainText("❌ ERREUR : Impossible d'accéder à la webcam")
                 self.cap = None
                 return
-            self.timer.start(30)  # Rafraîchit toutes les 30 ms
+            self.timer.start(30)  
             self.toggle_webcam.setText("Désactiver la webcam")
         else:
             self.timer.stop()
             self.cap.release()
             self.cap = None
             self.webcam.clear()
+            self.lip_tracking_output.setText("Analyse des lèvres : Inactif")  # 🔹 Réinitialisation
             self.toggle_webcam.setText("Activer la webcam")
 
     def update_frame(self):
-        """Capture l'image de la webcam et l'affiche dans le label"""
+        """Capture l'image de la webcam et applique le lip tracking"""
         if self.cap is not None:
             ret, frame = self.cap.read()
             if ret:
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                h, w, ch = frame.shape
+
+                # 🔹 Appliquer le lip tracking
+                processed_frame, lip_status = self.lip_tracker.process_frame(frame)
+
+                # 🔹 Mettre à jour le texte d'analyse
+                self.lip_tracking_output.setText(f"Analyse des lèvres : {lip_status}")
+
+                # 🔹 Convertir l'image traitée pour l'affichage dans QLabel
+                h, w, ch = processed_frame.shape
                 bytes_per_line = ch * w
-                qt_image = QImage(
-                    frame.data, w, h, bytes_per_line, QImage.Format_RGB888
-                )
+                qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
                 self.webcam.setPixmap(QPixmap.fromImage(qt_image))
