@@ -16,6 +16,7 @@ class LipTracking:
         detections = self.detector(frame, 1)
         activation = 0
         lip_status = "Non détecté"
+        lip_coordinates = None  # Initialisation des coordonnées de la bouche
 
         if len(detections) > 0:
             for k, d in enumerate(detections):
@@ -71,9 +72,10 @@ class LipTracking:
                     mouth = frame[Y_left_crop:Y_right_crop, X_left_crop:X_right_crop, :]
                     activation = 1
                     lip_status = "Détecté"
+                    lip_coordinates = (X_left_crop, Y_left_crop, X_right_crop - X_left_crop, Y_right_crop - Y_left_crop)  # (x, y, w, h)
                     cv2.rectangle(frame, (X_left_crop, Y_left_crop), (X_right_crop, Y_right_crop), (0, 255, 0), 2)
                 else:
                     activation = 0
                     lip_status = "Hors champ"
 
-        return frame, lip_status
+        return frame, lip_coordinates, lip_status  # Retourner les coordonnées de la bouche
