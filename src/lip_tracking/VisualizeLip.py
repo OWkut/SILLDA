@@ -10,6 +10,7 @@ class LipTracking:
         self.predictor = dlib.shape_predictor(predictor_path)
         self.width_crop_max = 0
         self.height_crop_max = 0
+        self.target_aspect_ratio = 140 / 46  # Rapport d'aspect attendu par le modèle (140:46)
 
     def process_frame(self, frame):
         # Détection des visages dans la frame
@@ -40,8 +41,11 @@ class LipTracking:
                 X_center = (X_left + X_right) / 2.0
                 Y_center = (Y_left + Y_right) / 2.0
 
-                # Définition d'une bordure autour de la bouche
-                border = 30
+                # Définition d'une bordure dynamique autour de la bouche
+                border_width = int((X_right - X_left) * 0.5)  # Bordure de 50% de la largeur de la bouche
+                border_height = int((Y_right - Y_left) * 0.5)  # Bordure de 50% de la hauteur de la bouche
+                border = max(border_width, border_height)  # Utiliser la plus grande bordure
+
                 X_left_new = X_left - border
                 Y_left_new = Y_left - border
                 X_right_new = X_right + border
@@ -53,10 +57,19 @@ class LipTracking:
                 width_current = X_right - X_left
                 height_current = Y_right - Y_left
 
+                # Ajuster le rapport d'aspect pour correspondre à 140:46
+                current_aspect_ratio = width_new / height_new
+                if current_aspect_ratio > self.target_aspect_ratio:
+                    # Trop large : ajuster la hauteur
+                    height_new = width_new / self.target_aspect_ratio
+                else:
+                    # Trop étroit : ajuster la largeur
+                    width_new = height_new * self.target_aspect_ratio
+
                 # Mise à jour des dimensions de la zone de recadrage
                 if self.width_crop_max == 0 and self.height_crop_max == 0:
-                    self.width_crop_max = width_new
-                    self.height_crop_max = height_new
+                    self.width_crop_max = width_new * 0.8  # Réduire la largeur de 20%
+                    self.height_crop_max = height_new * 0.8  # Réduire la hauteur de 20%
                 else:
                     self.width_crop_max += 1.5 * np.maximum(width_current - self.width_crop_max, 0)
                     self.height_crop_max += 1.5 * np.maximum(height_current - self.height_crop_max, 0)

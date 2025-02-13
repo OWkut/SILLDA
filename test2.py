@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, Flatten, TimeDistributed
-from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QPlainTextEdit
+from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QPlainTextEdit, QHBoxLayout
 from PySide6.QtCore import QTimer, QThread, Signal
 from PySide6.QtGui import QImage, QPixmap
 import time
@@ -38,14 +38,19 @@ class LipReadingModel:
 
     def preprocess_frame(self, frame, lip_coordinates):
         x, y, w, h = lip_coordinates
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        frame = tf.image.rgb_to_grayscale(frame)
         frame = frame[y:y+h, x:x+w]
-        frame = cv2.resize(frame, (140, 46))  # Redimensionner pour correspondre à l'entrée du modèle
-        frame = frame / 255.0  # Normaliser les valeurs des pixels
-        return frame
+        frame = tf.image.resize(frame, (46, 140))  # Redimensionner pour correspondre à l'entrée du modèle
+
+       # Normalisation
+        mean = tf.math.reduce_mean(frame)
+        std = tf.math.reduce_std(tf.cast(frame, tf.float32))
+        frame = tf.cast((frame - mean), tf.float32) / std
+        return frame.numpy()  # Convertir en numpy array pour compatibilité avec le reste du code
 
     def predict(self, frames):
         # frames doit avoir la forme (75, 46, 140, 1)
+
         frames = np.expand_dims(frames, axis=0)  # Ajouter une dimension pour le batch (1, 75, 46, 140, 1)
         yhat = self.model.predict(frames)
         decoded = tf.keras.backend.ctc_decode(yhat, input_length=[75], greedy=True)[0][0].numpy()
@@ -65,20 +70,36 @@ class LipReadingApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("SILLDA - Transcription Labiale (Vidéo de Test)")
-        self.setGeometry(100, 100, 900, 600)
+        self.setGeometry(100, 100, 1200, 600)
         
-        self.layout = QVBoxLayout()
+        # Layout principal
+        self.main_layout = QHBoxLayout()
+        
+        # Section vidéo originale
+        self.video_layout = QVBoxLayout()
         self.video_label = QLabel(self)
+        self.video_label.setText("Vidéo originale")
+        self.video_layout.addWidget(self.video_label)
+        
+        # Section vidéo prétraitée (ce que voit le modèle)
+        self.processed_layout = QVBoxLayout()
+        self.processed_label = QLabel(self)
+        self.processed_label.setText("Ce que voit le modèle")
+        self.processed_layout.addWidget(self.processed_label)
+        
+        # Section texte
         self.text_output = QPlainTextEdit(self)
         self.text_output.setReadOnly(True)
         self.start_button = QPushButton("Démarrer la Transcription", self)
         
-        self.layout.addWidget(self.video_label)
-        self.layout.addWidget(self.text_output)
-        self.layout.addWidget(self.start_button)
+        # Ajouter les sections au layout principal
+        self.main_layout.addLayout(self.video_layout)
+        self.main_layout.addLayout(self.processed_layout)
+        self.main_layout.addWidget(self.text_output)
+        self.main_layout.addWidget(self.start_button)
         
         container = QWidget()
-        container.setLayout(self.layout)
+        container.setLayout(self.main_layout)
         self.setCentralWidget(container)
         
         self.cap = None
@@ -96,7 +117,7 @@ class LipReadingApp(QMainWindow):
 
     def start_video_processing(self):
         # Charger la vidéo de test
-        video_path = "data/raw/lip_reading_dlib/bbaf3s.mpg"  # Remplacez par le chemin de votre vidéo de test
+        video_path = "data/raw/lip_reading_dlib/bbaf2n.mpg"  # Remplacez par le chemin de votre vidéo de test
         self.cap = cv2.VideoCapture(video_path)
         if not self.cap.isOpened():
             self.text_output.appendPlainText("❌ ERREUR : Impossible d'ouvrir la vidéo de test")
@@ -114,8 +135,17 @@ class LipReadingApp(QMainWindow):
             self.fps = self.frame_count / (current_time - self.prev_time)
             
             if lip_coordinates is not None:
+                # Prétraiter la frame pour le modèle
                 cropped_frame = self.transcriber.preprocess_frame(processed_frame, lip_coordinates)
                 self.frame_buffer.append(cropped_frame)
+                
+                # Afficher la frame prétraitée
+                processed_display_frame = (cropped_frame * 255).astype(np.uint8)
+                processed_display_frame = cv2.cvtColor(processed_display_frame, cv2.COLOR_GRAY2RGB)
+                h, w, ch = processed_display_frame.shape
+                bytes_per_line = ch * w
+                qt_image = QImage(processed_display_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+                self.processed_label.setPixmap(QPixmap.fromImage(qt_image))
                 
                 if len(self.frame_buffer) == 75:
                     frames = np.array(self.frame_buffer)
