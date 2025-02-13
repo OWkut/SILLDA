@@ -8,6 +8,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QV
 from PySide6.QtCore import QTimer
 from src.lip_tracking.VisualizeLip import LipTracking
 from PySide6.QtGui import QImage, QPixmap
+import time
 
 
 class LipReadingModel:
@@ -87,6 +88,9 @@ class LipReadingApp(QMainWindow):
         self.transcriber = LipReadingModel()
         self.frame_buffer = []  # Buffer pour stocker les frames
         self.full_decoded_text = ""  # Texte transcrit complet
+        self.prev_time = time.time()
+        self.fram_count = 0
+        self.fps = 0
         
         self.toggle_webcam_button.clicked.connect(self.toggle_webcam)
     
@@ -109,10 +113,18 @@ class LipReadingApp(QMainWindow):
 
     def update_frame(self):
         ret, frame = self.cap.read()
+        current_time = time.time()
+        
         if ret:
+            # Calcul du FPS
+            elapsed_time = current_time - self.prev_time
+            self.prev_time = current_time
+            self.fps = 1 / elapsed_time if elapsed_time > 0 else 0
+            
             # Traitement du frame avec le lip tracking
             processed_frame, lip_coordinates, lip_status = self.lip_tracker.process_frame(frame)
-            
+            self.fram_count += 1
+
             if lip_coordinates is not None:
                 # Prétraitement du frame pour le lip reading
                 cropped_frame = self.transcriber.preprocess_frame(processed_frame, lip_coordinates)
@@ -133,7 +145,7 @@ class LipReadingApp(QMainWindow):
                     
                     # Réinitialiser le buffer
                     self.frame_buffer = []
-            
+
             if processed_frame is not None:
                 # Convertir l'image BGR en RGB
                 processed_frame = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
@@ -144,10 +156,14 @@ class LipReadingApp(QMainWindow):
                     print("Erreur: L'image traitée est vide")
                     return  # Sortir si l'image est vide
                 
+                # Ajouter le texte FPS sur l'image
+                cv2.putText(processed_frame, f"FPS: {self.fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+
                 # Afficher l'image traitée dans l'interface
                 bytes_per_line = ch * w
                 qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
                 self.webcam_label.setPixmap(QPixmap.fromImage(qt_image))
+
 
 
 if __name__ == "__main__":
