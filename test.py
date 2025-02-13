@@ -5,11 +5,11 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, Flatten, TimeDistributed
 from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QPlainTextEdit
-from PySide6.QtCore import QTimer
-from src.lip_tracking.VisualizeLip import LipTracking
+from PySide6.QtCore import QTimer, QThread, Signal
 from PySide6.QtGui import QImage, QPixmap
 import time
 
+from src.lip_tracking.VisualizeLip import LipTracking
 
 class LipReadingModel:
     def __init__(self):
@@ -20,46 +20,46 @@ class LipReadingModel:
         self.model.load_weights('./models/pretrained/checkpoint_2').expect_partial()
     
     def build_model(self):
-        model = Sequential()
-
-        model.add(Conv3D(128, 3, input_shape=(75, 46, 140, 1), padding='same'))
-        model.add(Activation('relu'))
-        model.add(MaxPool3D((1, 2, 2)))
-
-        model.add(Conv3D(256, 3, padding='same'))
-        model.add(Activation('relu'))
-        model.add(MaxPool3D((1, 2, 2)))
-
-        model.add(Conv3D(75, 3, padding='same'))
-        model.add(Activation('relu'))
-        model.add(MaxPool3D((1, 2, 2)))
-
-        model.add(TimeDistributed(Flatten()))
-
-        model.add(Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)))
-        model.add(Dropout(.5))
-
-        model.add(Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)))
-        model.add(Dropout(.5))
-
-        model.add(Dense(41, kernel_initializer='he_normal', activation='softmax'))
+        model = Sequential([
+            Conv3D(128, 3, input_shape=(75, 46, 140, 1), padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            Conv3D(256, 3, padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            Conv3D(75, 3, padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            TimeDistributed(Flatten()),
+            Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)),
+            Dropout(.5),
+            Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)),
+            Dropout(.5),
+            Dense(41, kernel_initializer='he_normal', activation='softmax')
+        ])
         return model
 
     def preprocess_frame(self, frame, lip_coordinates):
         x, y, w, h = lip_coordinates
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         frame = frame[y:y+h, x:x+w]
-        frame = cv2.resize(frame, (140, 46))  # Resize to match model input size
-        frame = frame / 255.0  # Normalisation simple au lieu de z-score
+        frame = cv2.resize(frame, (140, 46)) # Resize to match model input size
+        frame = frame / 255.0
         return frame
 
     def predict(self, frames):
         # frames doit avoir la forme (75, 46, 140, 1)
-        frames = np.expand_dims(frames, axis=0)  # Ajouter une dimension pour le batch (1, 75, 46, 140, 1)
+        frames = np.expand_dims(frames, axis=0) # Ajouter une dimension pour le batch (1, 75, 46, 140, 1)
         yhat = self.model.predict(frames)
         decoded = tf.keras.backend.ctc_decode(yhat, input_length=[75], greedy=True)[0][0].numpy()
         return "".join([tf.strings.reduce_join([self.num_to_char(word) for word in sentence]).numpy().decode('utf-8') for sentence in decoded])
 
+class PredictionThread(QThread):
+    result_signal = Signal(str)
+    def __init__(self, transcriber, frames):
+        super().__init__()
+        self.transcriber = transcriber
+        self.frames = frames
+    def run(self):
+        transcription = self.transcriber.predict(self.frames)
+        self.result_signal.emit(transcription)
 
 class LipReadingApp(QMainWindow):
     def __init__(self):
@@ -86,8 +86,8 @@ class LipReadingApp(QMainWindow):
         self.timer.timeout.connect(self.update_frame)
         self.lip_tracker = LipTracking()
         self.transcriber = LipReadingModel()
-        self.frame_buffer = []  # Buffer pour stocker les frames
-        self.full_decoded_text = ""  # Texte transcrit complet
+        self.frame_buffer = [] # Pour stocker les frames
+        self.full_decoded_text = "" # Texte transcrit complet
         self.prev_time = time.time()
         self.fram_count = 0
         self.fps = 0
@@ -98,11 +98,12 @@ class LipReadingApp(QMainWindow):
         if self.cap is None:
             self.cap = cv2.VideoCapture(0)
             self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            self.cap.set(cv2.CAP_PROP_FPS, 30)
             if not self.cap.isOpened():
                 self.text_output.appendPlainText("❌ ERREUR : Impossible d'accéder à la webcam")
                 self.cap = None
                 return
-            self.timer.start(50)
+            self.timer.start(33)
             self.toggle_webcam_button.setText("Désactiver la Webcam")
         else:
             self.timer.stop()
@@ -113,58 +114,39 @@ class LipReadingApp(QMainWindow):
 
     def update_frame(self):
         ret, frame = self.cap.read()
-        current_time = time.time()
-        
         if ret:
-            # Calcul du FPS
-            elapsed_time = current_time - self.prev_time
-            self.prev_time = current_time
-            self.fps = 1 / elapsed_time if elapsed_time > 0 else 0
-            
-            # Traitement du frame avec le lip tracking
-            processed_frame, lip_coordinates, lip_status = self.lip_tracker.process_frame(frame)
+            frame = cv2.resize(frame, (320, 240))
+            processed_frame, lip_coordinates, _ = self.lip_tracker.process_frame(frame)
             self.fram_count += 1
-
+            current_time = time.time()
+            self.fps = self.fram_count / (current_time - self.prev_time)
+            
             if lip_coordinates is not None:
-                # Prétraitement du frame pour le lip reading
                 cropped_frame = self.transcriber.preprocess_frame(processed_frame, lip_coordinates)
-                
-                # Ajouter le frame prétraité au buffer
                 self.frame_buffer.append(cropped_frame)
                 
-                # Si le buffer contient 75 frames, prédire le texte
                 if len(self.frame_buffer) == 75:
-                    # Convertir le buffer en un tableau numpy de forme (75, 46, 140, 1)
-                    frames = np.array(self.frame_buffer)  # Forme (75, 46, 140)
-                    frames = np.expand_dims(frames, axis=-1)  # Ajouter une dimension pour le canal (75, 46, 140, 1)
+                    frames = np.array(self.frame_buffer)
+                    frames = np.expand_dims(frames, axis=-1)
                     
-                    # Prédire le texte
-                    transcription = self.transcriber.predict(frames)
-                    self.full_decoded_text += transcription + " "
-                    self.text_output.setPlainText(self.full_decoded_text)
+                    self.prediction_thread = PredictionThread(self.transcriber, frames)
+                    self.prediction_thread.result_signal.connect(self.update_transcription)
+                    self.prediction_thread.start()
                     
-                    # Réinitialiser le buffer
                     self.frame_buffer = []
-
-            if processed_frame is not None:
-                # Convertir l'image BGR en RGB
+            
+            if self.fram_count % 3 == 0:
                 processed_frame = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
-                
-                # Vérifier la forme de l'image
                 h, w, ch = processed_frame.shape
-                if h == 0 or w == 0:
-                    print("Erreur: L'image traitée est vide")
-                    return  # Sortir si l'image est vide
-                
-                # Ajouter le texte FPS sur l'image
-                cv2.putText(processed_frame, f"FPS: {self.fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-
-                # Afficher l'image traitée dans l'interface
                 bytes_per_line = ch * w
                 qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
                 self.webcam_label.setPixmap(QPixmap.fromImage(qt_image))
+            
+            self.setWindowTitle(f"SILLDA - FPS: {self.fps:.2f}")
 
-
+    def update_transcription(self, transcription):
+        self.full_decoded_text += transcription + " "
+        self.text_output.setPlainText(self.full_decoded_text)
 
 if __name__ == "__main__":
     app = QApplication([])
