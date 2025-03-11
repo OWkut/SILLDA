@@ -80,38 +80,17 @@ class LipTracking:
                 Y_left_crop = int(Y_center - self.height_crop_max / 2.0)
                 Y_right_crop = int(Y_center + self.height_crop_max / 2.0)
 
-                # __________ #
-                ## _____ Ajoutez un filtre passe-bas pour lisser les coordonnées _____ #
-                # class SmoothingFilter:
-                #     def __init__(self, alpha=0.5):
-                #         self.alpha = alpha
-                #         self.prev_value = None
+                #______ Ajouter un décalagae _____ #
+                # Décalage du rectangle
+                decalage_x = int(self.width_crop_max * 0.06)   # vers la gauche
+                decalage_y = int(self.height_crop_max * 0.065)  # vers le haut
 
-                #     def smooth(self, value):
-                #         if self.prev_value is None:
-                #             self.prev_value = value
-                #         else:
-                #             self.prev_value = self.alpha * value + (1 - self.alpha) * self.prev_value
-                #         return self.prev_value
+                # Appliquer le décalage
+                X_left_crop -= decalage_x
+                X_right_crop -= decalage_x
+                Y_left_crop -= decalage_y
+                Y_right_crop -= decalage_y
 
-                # smoother = SmoothingFilter(alpha=0.5)
-                # X_left_crop = smoother.smooth(X_left_crop)
-                # X_right_crop = smoother.smooth(X_right_crop)
-                # Y_left_crop = smoother.smooth(Y_left_crop)
-                # Y_right_crop = smoother.smooth(Y_right_crop)
-
-                # #______ Ajouter un décalagae _____ #
-                # # Décalage du rectangle
-                # decalage_x = int(self.width_crop_max * 0.06)   # vers la gauche
-                # decalage_y = int(self.height_crop_max * 0.065)  # vers le haut
-
-                # # Appliquer le décalage
-                # X_left_crop -= decalage_x
-                # X_right_crop -= decalage_x
-                # Y_left_crop -= decalage_y
-                # Y_right_crop -= decalage_y
-                
-                # __________ #
 
                 # Vérification que les points de recadrage sont dans l'image
                 if X_left_crop >= 0 and Y_left_crop >= 0 and X_right_crop < frame.shape[1] and Y_right_crop < frame.shape[0]:

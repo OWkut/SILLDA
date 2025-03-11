@@ -17,6 +17,10 @@ from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QTimer, Qt, QPropertyAnimation, QEasingCurve
 from src.lip_tracking.VisualizeLip import LipTracking
 
+import tensorflow as tf
+from tensorflow.keras.models import Sequential # type: ignore
+from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, TimeDistributed, Flatten # type: ignore
+
 class MainWindowUi(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -25,6 +29,11 @@ class MainWindowUi(QMainWindow):
         self.setWindowTitle("SILLDA")
         self.setGeometry(100, 100, 900, 600)
         self.load_styles()
+
+        # 🔹 Définir le vocabulaire et les mappages
+        self.vocab = [x for x in "abcdefghijklmnopqrstuvwxyz'?!123456789 "]
+        self.char_to_num = tf.keras.layers.StringLookup(vocabulary=self.vocab, oov_token="")
+        self.num_to_char = tf.keras.layers.StringLookup(vocabulary=self.char_to_num.get_vocabulary(), oov_token="", invert=True)
 
         # 🔹 Widget central contenant la webcam et le menu
         self.main_widget = QWidget()
@@ -97,6 +106,10 @@ class MainWindowUi(QMainWindow):
         # État du menu (fermé par défaut)
         self.menu_open = False
 
+        # 🔹 Charger le modèle de lipreading
+        self.model = self.load_model()
+        self.frames = []
+
     def load_styles(self):
         """Charge le fichier QSS et applique les styles"""
         file_path = os.path.dirname(__file__)
@@ -142,6 +155,52 @@ class MainWindowUi(QMainWindow):
             self.lip_tracking_output.setText("Analyse des lèvres : Inactif")  # 🔹 Réinitialisation
             self.toggle_webcam.setText("Activer la webcam")
 
+    # def update_frame(self):
+    #     """Capture l'image de la webcam et applique le lip tracking"""
+    #     if self.cap is not None:
+    #         ret, frame = self.cap.read()
+    #         if ret:
+    #             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+    #             # 🔹 Appliquer le lip tracking
+    #             processed_frame, lip_status = self.lip_tracker.process_frame(frame)
+
+    #             # 🔹 Mettre à jour le texte d'analyse
+    #             self.lip_tracking_output.setText(f"Analyse des lèvres : {lip_status}")
+
+    #             # 🔹 Convertir l'image traitée pour l'affichage dans QLabel
+    #             h, w, ch = processed_frame.shape
+    #             bytes_per_line = ch * w
+    #             qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+    #             self.webcam.setPixmap(QPixmap.fromImage(qt_image))
+
+    # ========================= SECTION MODELE LIPREADING + LIPTRACKING =========================
+    def load_model(self):
+        """Charge le modèle de lipreading"""
+        model = Sequential([
+            Conv3D(128, 3, input_shape=(75, 46, 140, 1), padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            Conv3D(256, 3, padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            Conv3D(75, 3, padding='same', activation='relu'),
+            MaxPool3D((1, 2, 2)),
+            TimeDistributed(Flatten()),
+            Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)),
+            Dropout(.5),
+            Bidirectional(LSTM(128, kernel_initializer='Orthogonal', return_sequences=True)),
+            Dropout(.5),
+            Dense(self.char_to_num.vocabulary_size() + 1, kernel_initializer='he_normal', activation='softmax')
+        ])
+        model.load_weights('./models/pretrained/checkpoint_2').expect_partial()
+        return model
+
+    def predict_text(self, frames):
+        """Prédit le texte à partir des frames"""
+        frames = np.expand_dims(frames, axis=0)  # Ajouter une dimension pour le batch
+        yhat = self.model.predict(frames)
+        decoded = tf.keras.backend.ctc_decode(yhat, [75], greedy=True)[0][0].numpy()
+        return tf.strings.reduce_join([self.num_to_char(word) for word in decoded[0]]).numpy().decode('utf-8')
+
     def update_frame(self):
         """Capture l'image de la webcam et applique le lip tracking"""
         if self.cap is not None:
@@ -150,9 +209,21 @@ class MainWindowUi(QMainWindow):
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
                 # 🔹 Appliquer le lip tracking
-                processed_frame, lip_status = self.lip_tracker.process_frame(frame)
+                processed_frame, lip_coordinates, _ = self.lip_tracker.process_frame(frame)
+
+                if lip_coordinates is not None:
+                    x, y, w, h = lip_coordinates
+                    mouth_region = frame[y:y+h, x:x+w]  # Extraire la région des lèvres
+                    mouth_resized = cv2.resize(mouth_region, (140, 46))  # Redimensionner à la taille attendue par le modèle
+                    mouth_resized_grey = tf.image.rgb_to_grayscale(mouth_resized)  # Convertir en niveaux de gris
+                    self.frames.append(mouth_resized_grey)
+                else:
+                    # Si aucune bouche n'est détectée, ajouter une frame vide (noire)
+                    self.frames.append(tf.zeros((46, 140, 1), dtype=tf.float32))
+                    print("frame vide")
 
                 # 🔹 Mettre à jour le texte d'analyse
+                lip_status = "Détecté" if lip_coordinates is not None else "Non détecté"
                 self.lip_tracking_output.setText(f"Analyse des lèvres : {lip_status}")
 
                 # 🔹 Convertir l'image traitée pour l'affichage dans QLabel
@@ -160,3 +231,12 @@ class MainWindowUi(QMainWindow):
                 bytes_per_line = ch * w
                 qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
                 self.webcam.setPixmap(QPixmap.fromImage(qt_image))
+
+                # 🔹 Prédire le texte toutes les 75 frames
+                if len(self.frames) >= 75:
+                    frames_np = np.array(self.frames[-75:])  # Convertir la liste en tableau numpy
+                    frames_np = tf.cast(frames_np, tf.float32)  # Convertir en tf.float32
+                    frames_np = (frames_np - tf.math.reduce_mean(frames_np)) / tf.math.reduce_std(frames_np)
+                    predicted_text = self.predict_text(frames_np)
+                    self.text_output.appendPlainText(predicted_text)
+                    self.frames = []  # Réinitialiser les frames après la prédiction

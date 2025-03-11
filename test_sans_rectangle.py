@@ -9,7 +9,7 @@ from PySide6.QtCore import QTimer, QThread, Signal
 from PySide6.QtGui import QImage, QPixmap
 import time
 
-from src.lip_tracking.VisualizeLip import LipTracking
+# from src.lip_tracking.VisualizeLip import LipTracking
 
 vocab = [x for x in "abcdefghijklmnopqrstuvwxyz'?!123456789 "]
 char_to_num = tf.keras.layers.StringLookup(vocabulary=vocab, oov_token="")
@@ -40,8 +40,7 @@ class LipReadingModel:
     ])
         return model
 
-    def preprocess_frame(self, frame, lip_coordinates):
-        x, y, w, h = lip_coordinates
+    def preprocess_frame(self, frame):
         frame = tf.image.rgb_to_grayscale(frame)
         frame = frame[190:236, 80:220, :]
         frame = tf.image.resize(frame, (46, 140))  # Redimensionner pour correspondre à l'entrée du modèle
@@ -109,7 +108,7 @@ class LipReadingApp(QMainWindow):
         self.cap = None
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_frame)
-        self.lip_tracker = LipTracking()
+        # self.lip_tracker = LipTracking()
         self.transcriber = LipReadingModel()
         self.frame_buffer = []  # Pour stocker les frames
         self.full_decoded_text = ""  # Texte transcrit complet
@@ -133,61 +132,53 @@ class LipReadingApp(QMainWindow):
         ret, frame = self.cap.read()
         if ret:
             #frame = cv2.resize(frame, (320, 240))
-            processed_frame, lip_coordinates, _ = self.lip_tracker.process_frame(frame)
+            # processed_frame, lip_coordinates, _ = self.lip_tracker.process_frame(frame)
             self.frame_count += 1
             current_time = time.time()
             self.fps = self.frame_count / (current_time - self.prev_time)
             
-            if lip_coordinates is not None:
-                # Prétraiter la frame pour le modèle
-                cropped_frame = self.transcriber.preprocess_frame(processed_frame, lip_coordinates)
-                self.frame_buffer.append(cropped_frame)
-                
-                # # Afficher la frame prétraitée
-                # processed_display_frame = (cropped_frame * 255).astype(np.uint8)
-                # processed_display_frame = cv2.cvtColor(processed_display_frame, cv2.COLOR_GRAY2RGB)
-                # h, w, ch = processed_display_frame.shape
-                # bytes_per_line = ch * w
-                # qt_image = QImage(processed_display_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
-                # self.processed_label.setPixmap(QPixmap.fromImage(qt_image))
-                
-                if len(self.frame_buffer) == 75:
-                    frames = np.array(self.frame_buffer)
-                    frames = np.expand_dims(frames, axis=-1)
+            # if lip_coordinates is not None:
+            # Prétraiter la frame pour le modèle
+            cropped_frame = self.transcriber.preprocess_frame(frame)
+            self.frame_buffer.append(cropped_frame)
+            
+            if len(self.frame_buffer) == 75:
+                frames = np.array(self.frame_buffer)
+                frames = np.expand_dims(frames, axis=-1)
 
-                    # Normalisation
-                    mean = tf.math.reduce_mean(frames)
-                    std = tf.math.reduce_std(tf.cast(frames, tf.float32))
-                    normalized_frames = tf.cast((frames - mean), tf.float32) / std
-                    normalized_frames = normalized_frames.numpy()  # Convertir en numpy pour affichage
+                # Normalisation
+                mean = tf.math.reduce_mean(frames)
+                std = tf.math.reduce_std(tf.cast(frames, tf.float32))
+                normalized_frames = tf.cast((frames - mean), tf.float32) / std
+                normalized_frames = normalized_frames.numpy()  # Convertir en numpy pour affichage
 
-                    # Affichage séquentiel des 75 frames normalisées
-                    for i in range(75):
-                        display_frame = normalized_frames[i, :, :, 0]  # Extraire la i-ème frame normalisée
-                        display_frame = ((display_frame) * 255).astype(np.uint8)  
-                        display_frame = cv2.cvtColor(display_frame, cv2.COLOR_GRAY2RGB)
+                # Affichage séquentiel des 75 frames normalisées
+                for i in range(75):
+                    display_frame = normalized_frames[i, :, :, 0]  # Extraire la i-ème frame normalisée
+                    display_frame = ((display_frame) * 255).astype(np.uint8)  
+                    display_frame = cv2.cvtColor(display_frame, cv2.COLOR_GRAY2RGB)
 
-                        h, w, ch = display_frame.shape
-                        bytes_per_line = ch * w
-                        qt_image = QImage(display_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+                    h, w, ch = display_frame.shape
+                    bytes_per_line = ch * w
+                    qt_image = QImage(display_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
 
-                        self.processed_label.setPixmap(QPixmap.fromImage(qt_image))
-                        QApplication.processEvents()  # Force l'affichage immédiat de chaque frame
-                        time.sleep(0.03)  # Pause courte pour simuler un affichage fluide
+                    self.processed_label.setPixmap(QPixmap.fromImage(qt_image))
+                    QApplication.processEvents()  # Force l'affichage immédiat de chaque frame
+                    time.sleep(0.03)  # Pause courte pour simuler un affichage fluide
 
-                    self.prediction_thread = PredictionThread(self.transcriber, normalized_frames)
-                    self.prediction_thread.result_signal.connect(self.update_transcription)
-                    self.prediction_thread.start()
+                self.prediction_thread = PredictionThread(self.transcriber, normalized_frames)
+                self.prediction_thread.result_signal.connect(self.update_transcription)
+                self.prediction_thread.start()
 
-                    self.frame_buffer = []
+                self.frame_buffer = []
 
 
             
             if self.frame_count % 3 == 0:
-                processed_frame = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
-                h, w, ch = processed_frame.shape
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                h, w, ch = frame.shape
                 bytes_per_line = ch * w
-                qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+                qt_image = QImage(frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
                 self.video_label.setPixmap(QPixmap.fromImage(qt_image))
             
             self.setWindowTitle(f"SILLDA - FPS: {self.fps:.2f}")
