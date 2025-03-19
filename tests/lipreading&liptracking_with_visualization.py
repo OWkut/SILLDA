@@ -13,8 +13,13 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential # type: ignore
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, Flatten, TimeDistributed # type: ignore
 from typing import List
-import imageio
-from VisualizeLip import LipTracking
+
+# Permet de charger des modules depuis nimporte quel endroit du projet
+import sys
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) # Récupérer le chemin absolu du dossier racine du projet
+sys.path.append(project_root) # Ajouter ce chemin au sys.path
+
+from src.lip_tracking.VisualizeLip import LipTracking
 
 # Définir le vocabulaire et les mappages
 vocab = [x for x in "abcdefghijklmnopqrstuvwxyz'?!123456789 "]
@@ -37,16 +42,17 @@ def load_model():
         Dropout(.5),
         Dense(char_to_num.vocabulary_size() + 1, kernel_initializer='he_normal', activation='softmax')
     ])
-    model.load_weights('./models/pretrained/checkpoint_2').expect_partial()
+    model.load_weights('./models/pretrained/lipread_tensorflow/checkpoint')
     return model
 
 # Charger et prétraiter une vidéo en utilisant LipTracking
 def load_video_with_liptracking(path: str) -> List[float]:
     cap = cv2.VideoCapture(path)
     lip_tracker = LipTracking()  # Initialiser le LipTracking
-    frames = []
-    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    frames = []                  # Initialiser liste pour stocker les frames prétraitées
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) # Nombre total de frames dans la vidéo
 
+    # Parcourir chaque frame de la vidéo
     for _ in range(frame_count):
         ret, frame = cap.read()
         if not ret:
@@ -61,9 +67,9 @@ def load_video_with_liptracking(path: str) -> List[float]:
             mouth_resized = cv2.resize(mouth_region, (140, 46))  # Redimensionner à la taille attendue par le modèle
             mouth_resized_grey = tf.image.rgb_to_grayscale(mouth_resized)  # Convertir en niveaux de gris
             # _____ Problème ici _____ #
-            # frames.append(mouth_resized_grey)
-            frame = tf.image.rgb_to_grayscale(frame)
-            frames.append(frame[190:236,80:220,:])
+            frames.append(mouth_resized_grey)
+            # frame = tf.image.rgb_to_grayscale(frame)
+            # frames.append(frame[190:236,80:220,:])
         else:
             # Si aucune bouche n'est détectée, ajouter une frame vide (noire)
             frames.append(tf.zeros((46, 140, 1), dtype=tf.float32))
@@ -113,7 +119,7 @@ def process_video(video_path):
 
 if __name__ == "__main__":
     # Chemin de la vidéo à traiter
-    video_path = "data/raw/lip_reading_dlib/bbby8s.mpg"  # Remplacez par le chemin de la vidéo
+    video_path = "data/raw/lip_reading_dlib/bbaf2n.mpg"  # Remplacez par le chemin de la vidéo
 
     # Traiter la vidéo
     process_video(video_path)

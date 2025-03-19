@@ -4,12 +4,10 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Réduit les logs TensorFlow
 import tensorflow as tf
 tf.get_logger().setLevel("ERROR")  # Masque les messages supplémentaires
 
-import sys
 import cv2
 import os
 import numpy as np
 from PySide6.QtWidgets import (
-    QApplication,
     QWidget,
     QVBoxLayout,
     QPushButton,
@@ -21,12 +19,35 @@ from PySide6.QtWidgets import (
     QFileDialog,
 )
 from PySide6.QtGui import QImage, QPixmap
-from PySide6.QtCore import QTimer, Qt, QPropertyAnimation, QEasingCurve
+from PySide6.QtCore import QTimer, QPropertyAnimation, QEasingCurve, QThread, Signal
 
 # Importer les modèles (LipTracking et LipReading)
 from src.lip_tracking.VisualizeLip import LipTracking
 from src.lip_reading.LipReadingModel import LipReadingModel
 
+
+class TranscriptionThread(QThread):
+    """Thread pour effectuer la transcription en arrière-plan."""
+    transcription_ready = Signal(str)  # Signal pour envoyer la transcription terminée
+
+    def __init__(self, video_path, lip_reading_model):
+        super().__init__()
+        self.video_path = video_path
+        self.lip_reading_model = lip_reading_model
+
+    def run(self):
+        cap = cv2.VideoCapture(self.video_path)
+        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        cap.release()
+
+        if frame_count <= 75:
+            frames = self.lip_reading_model.load_video_with_liptracking(self.video_path)
+            transcription = self.lip_reading_model.predict_text(frames)
+        else:
+            frame_segments = self.lip_reading_model.load_long_video_with_liptracking(self.video_path)
+            transcription = self.lip_reading_model.predict_long_text(frame_segments)
+        
+        self.transcription_ready.emit(transcription) # Envoyer la transcription terminée
 
 class MainWindowUi(QMainWindow):
     def __init__(self):
@@ -111,6 +132,9 @@ class MainWindowUi(QMainWindow):
         self.load_video_button.setObjectName("load_video_button")
         self.load_video_button.clicked.connect(self.load_video)
         self.content_layout.addWidget(self.load_video_button)
+        
+        # 🔹 Propriétés supplémentaires pour la transcription en temps réel
+        self.transcription_thread = None
 
         # ========================= SECTION LIPTRACKING et LIPREADING ========================= #
         # 🔹 Initialisation du modèle de LipTracking et LipReading
@@ -134,45 +158,58 @@ class MainWindowUi(QMainWindow):
             self.process_video(video_path)
 
     def process_video(self, video_path):
-        """Affiche la vidéo et applique les modèles de lip tracking et lip reading."""
-        cap = cv2.VideoCapture(video_path)
-        
-        if not cap.isOpened():
+        """Affiche la vidéo en temps réel et lance la transcription en arrière-plan."""
+        # Ouvrir la vidéo avec OpenCV
+        self.cap = cv2.VideoCapture(video_path)
+        if not self.cap.isOpened():
             self.text_output.appendPlainText("❌ ERREUR : Impossible d'ouvrir la vidéo")
             return
-        
-        self.frames = []
-        while cap.isOpened():
-            ret, frame = cap.read()
-            if not ret:
-                break
-            
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            processed_frame, lip_coordinates, lip_status = self.lip_tracker.process_frame(frame)
-            self.frames.append(processed_frame)
-            
-            h, w, ch = processed_frame.shape
-            bytes_per_line = ch * w
-            qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
-            self.webcam.setPixmap(QPixmap.fromImage(qt_image))
-            
-        cap.release() # Fermer la vidéo
 
-        if (len(self.frames) <= 75):
-            self.transcribe_video(video_path)
-        else:
-            self.transcribe_long_video(video_path)
+        # Démarrer le timer pour afficher la vidéo
+        self.timer.timeout.disconnect()  # Déconnecter tout slot précédent
+        self.timer.timeout.connect(self.update_frame_video)  # Connecter à update_frame_video
+        self.timer.start(30)  # Mettre à jour toutes les 30 ms (~30 fps)
+
+        # Lancer la transcription dans un thread séparé
+        self.transcription_thread = TranscriptionThread(video_path, self.lip_reading_model)
+        self.transcription_thread.transcription_ready.connect(self.update_transcription)
+        self.transcription_thread.start()
+
+    def update_transcription(self, transcription):
+        """Met à jour la transcription dans l'interface graphique."""
+        self.text_output.setPlainText(transcription)
+
+    def update_frame_video(self):
+        """Affiche la vidéo frame par frame avec le rectangle du LipTracking."""
+        if self.cap is not None:
+            ret, frame = self.cap.read()
+            if ret:
+                # Convertir la frame en RGB pour le traitement
+                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+                # Appliquer le LipTracking
+                processed_frame, lip_coordinates, _ = self.lip_tracker.process_frame(frame_rgb)
+
+                # Dessiner un rectangle autour des lèvres si elles sont détectées
+                if lip_coordinates is not None:
+                    x, y, w, h = lip_coordinates
+                    cv2.rectangle(processed_frame, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Rectangle vert
+
+                # Afficher la frame traitée dans le QLabel
+                h, w, ch = processed_frame.shape
+                bytes_per_line = ch * w
+                qt_image = QImage(processed_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+                self.webcam.setPixmap(QPixmap.fromImage(qt_image))
+            else:
+                # Arrêter le timer lorsque la vidéo est terminée
+                self.timer.stop()
+                self.cap.release()
+                self.cap = None
     
     def transcribe_video(self, video_path):
         """Utilise le modèle de lip reading pour retranscrire la vidéo."""
         frames = self.lip_reading_model.load_video_with_liptracking(video_path)
         transcription = self.lip_reading_model.predict_text(frames)
-        self.text_output.setPlainText(transcription)
-
-    def transcribe_long_video(self, video_path):
-        """Utilise le modèle de lip reading pour retranscrire la vidéo."""
-        frames = self.lip_reading_model.load_long_video_with_liptracking(video_path)
-        transcription = self.lip_reading_model.predict_long_text(frames)
         self.text_output.setPlainText(transcription)
 
     def load_styles(self):
@@ -210,6 +247,9 @@ class MainWindowUi(QMainWindow):
                 self.text_output.appendPlainText("❌ ERREUR : Impossible d'accéder à la webcam")
                 self.cap = None
                 return
+            # Connecter le timer à update_frame pour la webcam
+            self.timer.timeout.disconnect()  # Déconnecter tout slot précédent
+            self.timer.timeout.connect(self.update_frame)  # Connecter à update_frame
             self.timer.start(30)  
             self.toggle_webcam.setText("Désactiver la webcam")
         else:

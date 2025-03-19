@@ -101,15 +101,15 @@ class LipTracking:
                 # Y_right_crop = smoother.smooth(Y_right_crop)
 
                 # #______ Ajouter un décalagae _____ #
-                # # Décalage du rectangle
-                # decalage_x = int(self.width_crop_max * 0.06)   # vers la gauche
-                # decalage_y = int(self.height_crop_max * 0.065)  # vers le haut
+                # Décalage du rectangle
+                decalage_x = int(self.width_crop_max * 0.06)   # vers la gauche
+                decalage_y = int(self.height_crop_max * 0.065)  # vers le haut
 
-                # # Appliquer le décalage
-                # X_left_crop -= decalage_x
-                # X_right_crop -= decalage_x
-                # Y_left_crop -= decalage_y
-                # Y_right_crop -= decalage_y
+                # Appliquer le décalage
+                X_left_crop -= decalage_x
+                X_right_crop -= decalage_x
+                Y_left_crop -= decalage_y
+                Y_right_crop -= decalage_y
                 
                 # __________ #
 

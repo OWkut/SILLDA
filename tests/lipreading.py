@@ -1,11 +1,18 @@
+# Désactiver les logs de Qt (évite les messages QObject::moveToThread)
 import os
+os.environ["QT_LOGGING_RULES"] = "*.debug=false;*.info=false;*.warning=false"
+
+# Désactiver les erreurs liées à Tensorflow
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Réduit les logs TensorFlow
+import tensorflow as tf
+tf.get_logger().setLevel("ERROR")  # Masque les messages supplémentaires
+
 import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, Reshape, Flatten, TimeDistributed
 from typing import List
-import imageio
 
 # Définir le vocabulaire et les mappages
 vocab = [x for x in "abcdefghijklmnopqrstuvwxyz'?!123456789 "]
@@ -28,7 +35,7 @@ def load_model():
         Dropout(.5),
         Dense(char_to_num.vocabulary_size() + 1, kernel_initializer='he_normal', activation='softmax')
     ])
-    model.load_weights('./models/pretrained/checkpoint_2').expect_partial()
+    model.load_weights('./models/pretrained/lipread_tensorflow/checkpoint').expect_partial()
     return model
 
 # Charger et prétraiter une vidéo
