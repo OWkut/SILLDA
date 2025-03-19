@@ -4185,3 +4185,1501 @@ RuntimeError: FFmpeg extension is not available.
 2025-02-11 17:14:26.250 - RealTimeSTT: root - DEBUG - Terminating transcription process
 2025-02-11 17:14:26.250 - RealTimeSTT: root - DEBUG - Finishing realtime thread
 2025-02-11 17:14:26.345 - RealTimeSTT: root - INFO - KeyboardInterrupt in text() method
+2025-02-19 09:59:36.620 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-02-19 09:59:36.634 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-02-19 09:59:36.646 - RealTimeSTT: root - INFO - Initializing faster_whisper realtime transcription model tiny, default device: cpu, compute type: default, device index: 0, download root: None
+2025-02-19 09:59:36.657 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-02-19 09:59:37.068 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-02-19 09:59:37.515 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.000
+2025-02-19 09:59:37.588 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.000 of audio
+2025-02-19 09:59:37.592 - RealTimeSTT: root - DEBUG - Faster_whisper realtime speech to text transcription model initialized successfully
+2025-02-19 09:59:37.592 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-02-19 09:59:37.592 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-02-19 09:59:37.845 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg6
+2025-02-19 09:59:37.845 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg6 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg6.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 09:59:37.861 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg5
+2025-02-19 09:59:37.861 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg5 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg5.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 09:59:37.861 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg4
+2025-02-19 09:59:37.861 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg4 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg4.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 09:59:37.861 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg
+2025-02-19 09:59:37.877 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 106, in _find_versionsed_ffmpeg_extension
+    raise RuntimeError(f"FFmpeg{version} extension is not available.")
+RuntimeError: FFmpeg extension is not available.
+2025-02-19 09:59:38.224 - RealTimeSTT: root - DEBUG - Silero VAD voice activity detection engine initialized successfully
+2025-02-19 09:59:38.224 - RealTimeSTT: root - DEBUG - Starting realtime worker
+2025-02-19 09:59:38.224 - RealTimeSTT: root - DEBUG - Waiting for main transcription model to start
+2025-02-19 09:59:43.181 - RealTimeSTT: root - DEBUG - Main transcription model ready
+2025-02-19 09:59:43.183 - RealTimeSTT: root - DEBUG - RealtimeSTT initialization completed successfully
+2025-02-19 09:59:43.183 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 09:59:43.183 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 09:59:43.187 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 09:59:53.295 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 09:59:53.295 - RealTimeSTT: root - INFO - recording started
+2025-02-19 09:59:53.295 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 09:59:53.296 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 09:59:53.511 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 09:59:53.512 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 09:59:53.525 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.528 of audio
+2025-02-19 09:59:54.094 - RealTimeSTT: root - DEBUG - Realtime text detected:  Mousseau
+2025-02-19 09:59:54.295 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 09:59:54.295 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 09:59:54.305 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.800 of audio
+2025-02-19 09:59:54.455 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 09:59:54.456 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 34816
+2025-02-19 09:59:54.456 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 09:59:54.486 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 09:59:54.490 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 09:59:54.494 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 09:59:54.900 - RealTimeSTT: root - DEBUG - Realtime text detected:  Bonjour !
+2025-02-19 09:59:55.170 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 09:59:55.202 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 09:59:55.203 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 09:59:55.203 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 09:59:55.205 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 09:59:57.204 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 09:59:57.205 - RealTimeSTT: root - INFO - recording started
+2025-02-19 09:59:57.205 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 09:59:57.205 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 09:59:57.416 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 09:59:57.416 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 09:59:57.428 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.208 of audio
+2025-02-19 09:59:57.987 - RealTimeSTT: root - DEBUG - Realtime text detected:  Moussez-vous, immédiat.
+2025-02-19 09:59:58.189 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 09:59:58.190 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 09:59:58.205 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.576 of audio
+2025-02-19 09:59:58.355 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 09:59:58.357 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 34816
+2025-02-19 09:59:58.358 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 09:59:58.423 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 09:59:58.425 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 09:59:58.436 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 09:59:58.855 - RealTimeSTT: root - DEBUG - Realtime text detected:  Non, je suis immédiat.
+2025-02-19 09:59:59.130 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 09:59:59.139 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 09:59:59.140 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 09:59:59.140 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 09:59:59.142 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:00:01.044 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:00:01.044 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:00:01.044 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:00:01.045 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:00:01.255 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:00:01.256 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:00:01.268 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:00:01.780 - RealTimeSTT: root - DEBUG - Realtime text detected:  Non tu es.
+2025-02-19 10:00:01.980 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:00:01.980 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:00:01.992 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:00:02.565 - RealTimeSTT: root - DEBUG - Realtime text detected:  Non tu es immédiat.
+2025-02-19 10:00:02.766 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:00:02.766 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:00:02.782 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:00:03.155 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:00:03.157 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 50176
+2025-02-19 10:00:03.157 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:00:03.169 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:00:03.172 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:00:03.178 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:00:03.375 - RealTimeSTT: root - DEBUG - Realtime text detected:  Non, tu es immédiat.
+2025-02-19 10:00:03.804 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:00:03.834 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:00:03.834 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:00:03.835 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:00:03.836 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:00:07.377 - RealTimeSTT: root - INFO - KeyboardInterrupt in wait_audio, shutting down
+2025-02-19 10:00:07.378 - RealTimeSTT: root - DEBUG - Finishing recording thread
+2025-02-19 10:00:07.393 - RealTimeSTT: root - DEBUG - Terminating reader process
+2025-02-19 10:00:08.110 - RealTimeSTT: root - DEBUG - Terminating transcription process
+2025-02-19 10:00:08.110 - RealTimeSTT: root - DEBUG - Finishing realtime thread
+2025-02-19 10:00:08.228 - RealTimeSTT: root - INFO - KeyboardInterrupt in text() method
+2025-02-19 10:11:45.810 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-02-19 10:11:45.821 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-02-19 10:11:45.830 - RealTimeSTT: root - INFO - Initializing faster_whisper realtime transcription model tiny, default device: cpu, compute type: default, device index: 0, download root: None
+2025-02-19 10:11:45.838 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-02-19 10:11:46.167 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-02-19 10:11:46.560 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.000
+2025-02-19 10:11:46.576 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.000 of audio
+2025-02-19 10:11:46.576 - RealTimeSTT: root - DEBUG - Faster_whisper realtime speech to text transcription model initialized successfully
+2025-02-19 10:11:46.576 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-02-19 10:11:46.576 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-02-19 10:11:46.963 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg6
+2025-02-19 10:11:46.973 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg6 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg6.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:11:46.979 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg5
+2025-02-19 10:11:46.979 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg5 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg5.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:11:46.979 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg4
+2025-02-19 10:11:46.979 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg4 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg4.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:11:46.987 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg
+2025-02-19 10:11:46.987 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 106, in _find_versionsed_ffmpeg_extension
+    raise RuntimeError(f"FFmpeg{version} extension is not available.")
+RuntimeError: FFmpeg extension is not available.
+2025-02-19 10:11:47.264 - RealTimeSTT: root - DEBUG - Silero VAD voice activity detection engine initialized successfully
+2025-02-19 10:11:47.264 - RealTimeSTT: root - DEBUG - Starting realtime worker
+2025-02-19 10:11:47.264 - RealTimeSTT: root - DEBUG - Waiting for main transcription model to start
+2025-02-19 10:11:52.163 - RealTimeSTT: root - DEBUG - Main transcription model ready
+2025-02-19 10:11:52.166 - RealTimeSTT: root - DEBUG - RealtimeSTT initialization completed successfully
+2025-02-19 10:11:52.167 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:11:52.167 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:11:52.169 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:11:53.894 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:11:53.894 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:11:53.894 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:11:53.895 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:11:54.096 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:11:54.098 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:11:54.114 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:54.639 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you for watching.
+2025-02-19 10:11:54.840 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:11:54.840 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:11:54.851 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:55.350 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you for joining us.
+2025-02-19 10:11:55.550 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:11:55.550 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:11:55.563 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:56.079 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:11:56.280 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 54784
+2025-02-19 10:11:56.280 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.424
+2025-02-19 10:11:56.303 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:56.757 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:11:56.958 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 65024
+2025-02-19 10:11:56.958 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.064
+2025-02-19 10:11:56.986 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:57.464 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:11:57.665 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 76288
+2025-02-19 10:11:57.665 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.768
+2025-02-19 10:11:57.703 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:58.253 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:11:58.454 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 89600
+2025-02-19 10:11:58.454 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.600
+2025-02-19 10:11:58.493 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:11:58.763 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:11:58.766 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 94208
+2025-02-19 10:11:58.766 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:11:58.779 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:11:58.784 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:11:58.802 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:11:59.020 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:11:59.454 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:11:59.499 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 10:11:59.500 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:11:59.500 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:11:59.501 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:01.383 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:01.383 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:01.384 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:01.384 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:01.596 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:01.596 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:01.608 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:02.090 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:02.291 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:02.292 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:02.313 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.768 of audio
+2025-02-19 10:12:02.812 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:03.013 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:12:03.013 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:12:03.026 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.472 of audio
+2025-02-19 10:12:03.521 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:03.722 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 53760
+2025-02-19 10:12:03.722 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.360
+2025-02-19 10:12:03.738 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:02.176 of audio
+2025-02-19 10:12:04.263 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:04.465 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 66048
+2025-02-19 10:12:04.465 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.128
+2025-02-19 10:12:04.500 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:02.944 of audio
+2025-02-19 10:12:05.039 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:05.239 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 78336
+2025-02-19 10:12:05.239 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.896
+2025-02-19 10:12:05.259 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:03.712 of audio
+2025-02-19 10:12:05.353 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:05.355 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 79872
+2025-02-19 10:12:05.356 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:05.447 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:05.450 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:05.458 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:05.799 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello.
+2025-02-19 10:12:06.078 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:06.114 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:12:06.115 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:06.116 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:06.120 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:07.273 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:07.273 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:07.273 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:07.273 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:07.483 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:07.483 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:07.494 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:07.996 - RealTimeSTT: root - DEBUG - Realtime text detected:  Is it?
+2025-02-19 10:12:08.197 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:08.197 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:08.205 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:08.750 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's see, let's see
+2025-02-19 10:12:08.950 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:12:08.950 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:12:08.963 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:09.539 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's a, it's a, it's a, it's a, it's a
+2025-02-19 10:12:09.740 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:12:09.740 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:12:09.754 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:10.341 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's a good idea to talk like that.
+2025-02-19 10:12:10.542 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 69120
+2025-02-19 10:12:10.542 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.320
+2025-02-19 10:12:10.559 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:11.120 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's a good idea to talk like that.
+2025-02-19 10:12:11.321 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 81408
+2025-02-19 10:12:11.321 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.088
+2025-02-19 10:12:11.344 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.640 of audio
+2025-02-19 10:12:11.899 - RealTimeSTT: root - DEBUG - Realtime text detected:  But it's the same thing as it is.
+2025-02-19 10:12:12.003 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:12.005 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 92160
+2025-02-19 10:12:12.005 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:12.016 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:12.018 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:12.023 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:12.100 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:12:12.100 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:12:12.101 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:12.105 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:12.718 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:12.734 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.72 seconds
+2025-02-19 10:12:12.736 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:12.737 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:12.739 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:13.411 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:13.411 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:13.411 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:13.411 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:13.625 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:13.625 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:13.635 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:14.152 - RealTimeSTT: root - DEBUG - Realtime text detected:  Me too
+2025-02-19 10:12:14.353 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:14.353 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:14.361 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:14.867 - RealTimeSTT: root - DEBUG - Realtime text detected:  Me too, please.
+2025-02-19 10:12:15.069 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:12:15.069 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:12:15.080 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:15.659 - RealTimeSTT: root - DEBUG - Realtime text detected:  But I always think I'm a silo.
+2025-02-19 10:12:15.860 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:12:15.860 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:12:15.874 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:16.404 - RealTimeSTT: root - DEBUG - Realtime text detected:  But I always thought I would have a silence and it's impossible.
+2025-02-19 10:12:16.604 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 67072
+2025-02-19 10:12:16.604 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.192
+2025-02-19 10:12:16.623 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:12:17.003 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:17.005 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 73728
+2025-02-19 10:12:17.005 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:17.020 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:17.024 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:17.025 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:17.300 - RealTimeSTT: root - DEBUG - Realtime text detected:  But I think I have a lot of silence and it's a little bit different.
+2025-02-19 10:12:17.770 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:17.789 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.77 seconds
+2025-02-19 10:12:17.789 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:17.789 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:17.791 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:19.043 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:19.043 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:19.043 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:19.044 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:19.249 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:19.249 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:19.256 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:12:19.813 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm sorry.
+2025-02-19 10:12:20.014 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:12:20.014 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:12:20.025 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.896 of audio
+2025-02-19 10:12:20.528 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:12:20.729 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:12:20.729 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:12:20.740 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:12:21.241 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm sorry
+2025-02-19 10:12:21.441 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 54784
+2025-02-19 10:12:21.441 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.424
+2025-02-19 10:12:21.455 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.640 of audio
+2025-02-19 10:12:22.001 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm sorry
+2025-02-19 10:12:22.053 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:22.054 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 64512
+2025-02-19 10:12:22.054 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:22.075 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:22.079 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:22.080 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:22.203 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:12:22.203 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:12:22.204 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:22.206 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:22.693 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:22.744 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:12:22.744 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:22.744 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:22.746 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:27.303 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:27.303 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:27.303 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:27.304 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:27.513 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:27.513 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:27.520 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:12:28.055 - RealTimeSTT: root - DEBUG - Realtime text detected:  C'mon!
+2025-02-19 10:12:28.257 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:28.257 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:28.269 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.608 of audio
+2025-02-19 10:12:28.791 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:12:28.993 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:12:28.993 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:12:29.015 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:12:29.560 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hahaha.
+2025-02-19 10:12:29.761 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:12:29.761 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:12:29.777 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.088 of audio
+2025-02-19 10:12:29.993 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:29.994 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 59392
+2025-02-19 10:12:29.995 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:30.036 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:30.039 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:30.040 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:30.366 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:12:30.668 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:30.703 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:12:30.703 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:30.703 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:30.706 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:30.953 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:30.953 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:30.954 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:30.954 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:31.157 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:31.157 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:31.161 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.016 of audio
+2025-02-19 10:12:31.695 - RealTimeSTT: root - DEBUG - Realtime text detected:  It all might be.
+2025-02-19 10:12:31.896 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:31.896 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:31.905 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.016 of audio
+2025-02-19 10:12:32.435 - RealTimeSTT: root - DEBUG - Realtime text detected:  It all might be easy.
+2025-02-19 10:12:32.637 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:12:32.637 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:12:32.648 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.016 of audio
+2025-02-19 10:12:33.183 - RealTimeSTT: root - DEBUG - Realtime text detected:  Maybe all my news would work.
+2025-02-19 10:12:33.322 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:33.324 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 54272
+2025-02-19 10:12:33.324 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:33.379 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:33.383 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:33.384 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:12:33.384 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:12:33.385 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:33.386 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:33.393 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:34.013 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:34.048 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.67 seconds
+2025-02-19 10:12:34.048 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:34.048 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:34.051 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:43.173 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:43.174 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:43.174 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:43.174 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:43.379 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:43.379 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:43.386 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.248 of audio
+2025-02-19 10:12:43.388 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:43.589 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 23040
+2025-02-19 10:12:43.589 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.440
+2025-02-19 10:12:43.601 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.440 of audio
+2025-02-19 10:12:43.604 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:43.805 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 26112
+2025-02-19 10:12:43.805 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.632
+2025-02-19 10:12:43.815 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.136 of audio
+2025-02-19 10:12:44.320 - RealTimeSTT: root - DEBUG - Realtime text detected:  Okay.
+2025-02-19 10:12:44.520 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 37376
+2025-02-19 10:12:44.520 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.336
+2025-02-19 10:12:44.529 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.136 of audio
+2025-02-19 10:12:45.036 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hello, mate.
+2025-02-19 10:12:45.237 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 49664
+2025-02-19 10:12:45.237 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.104
+2025-02-19 10:12:45.266 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.136 of audio
+2025-02-19 10:12:45.814 - RealTimeSTT: root - DEBUG - Realtime text detected:  Delo, my name is
+2025-02-19 10:12:46.015 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 61952
+2025-02-19 10:12:46.015 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.872
+2025-02-19 10:12:46.030 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.136 of audio
+2025-02-19 10:12:46.595 - RealTimeSTT: root - DEBUG - Realtime text detected:  Delo, my name is Pablo.
+2025-02-19 10:12:46.795 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 74240
+2025-02-19 10:12:46.795 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.640
+2025-02-19 10:12:46.817 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.136 of audio
+2025-02-19 10:12:47.014 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:47.016 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 77824
+2025-02-19 10:12:47.016 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:47.070 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:47.074 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:47.083 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:47.448 - RealTimeSTT: root - DEBUG - Realtime text detected:  Delo, my name is Pablo.
+2025-02-19 10:12:47.818 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:47.838 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.76 seconds
+2025-02-19 10:12:47.839 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:47.839 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:47.841 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:48.483 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:48.483 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:48.483 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:48.483 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:48.687 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:48.687 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:48.698 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.176 of audio
+2025-02-19 10:12:49.236 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'll just call you soon.
+2025-02-19 10:12:49.437 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:49.437 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:49.447 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.176 of audio
+2025-02-19 10:12:50.017 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm just going to say that.
+2025-02-19 10:12:50.083 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:50.084 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 41984
+2025-02-19 10:12:50.084 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:50.108 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:50.112 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:50.125 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:50.218 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:12:50.218 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:12:50.219 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:50.221 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:50.727 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:50.776 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:12:50.776 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:50.776 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:50.780 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:52.453 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:52.453 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:52.453 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:52.454 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:52.660 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:52.660 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:52.675 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.816 of audio
+2025-02-19 10:12:53.206 - RealTimeSTT: root - DEBUG - Realtime text detected:  Okay.
+2025-02-19 10:12:53.407 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:12:53.407 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:12:53.418 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.816 of audio
+2025-02-19 10:12:53.987 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hey, hey, my voice...
+2025-02-19 10:12:54.189 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:12:54.189 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:12:54.204 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.056 of audio
+2025-02-19 10:12:54.243 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:54.244 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 45056
+2025-02-19 10:12:54.244 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:54.252 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:54.255 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:54.271 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:54.863 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hey, hey, my boy!
+2025-02-19 10:12:54.958 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:54.969 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 10:12:54.970 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:54.970 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:54.972 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:12:55.083 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:12:55.083 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:12:55.083 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:12:55.084 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:12:55.287 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:12:55.287 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:12:55.299 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:55.888 - RealTimeSTT: root - DEBUG - Realtime text detected:  And I'll see you in the next video!
+2025-02-19 10:12:56.089 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:12:56.089 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:12:56.100 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:56.627 - RealTimeSTT: root - DEBUG - Realtime text detected:  And we'll see you next time.
+2025-02-19 10:12:56.828 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:12:56.828 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:12:56.841 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:57.422 - RealTimeSTT: root - DEBUG - Realtime text detected:  And we'll see you next time.
+2025-02-19 10:12:57.444 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:12:57.447 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 54272
+2025-02-19 10:12:57.447 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:12:57.549 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:12:57.554 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:12:57.555 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:12:57.623 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:12:57.623 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:12:57.624 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:12:57.627 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:12:58.191 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:12:58.219 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:12:58.220 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:12:58.220 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:12:58.222 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:03.143 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:03.144 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:03.144 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:03.144 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:03.365 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:03.366 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:03.376 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:03.932 - RealTimeSTT: root - DEBUG - Realtime text detected:  Homewood.
+2025-02-19 10:13:04.133 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:13:04.133 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:13:04.148 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.640 of audio
+2025-02-19 10:13:04.681 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, my God.
+2025-02-19 10:13:04.882 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:13:04.883 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:13:04.897 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:05.417 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's a model.
+2025-02-19 10:13:05.618 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:13:05.618 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:13:05.640 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.576 of audio
+2025-02-19 10:13:06.143 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, model.
+2025-02-19 10:13:06.344 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 68096
+2025-02-19 10:13:06.344 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.256
+2025-02-19 10:13:06.362 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:06.904 - RealTimeSTT: root - DEBUG - Realtime text detected:  He's a model. He's a model.
+2025-02-19 10:13:07.105 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 79360
+2025-02-19 10:13:07.105 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.960
+2025-02-19 10:13:07.130 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:07.641 - RealTimeSTT: root - DEBUG - Realtime text detected:  He was like the dog?
+2025-02-19 10:13:07.842 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 91648
+2025-02-19 10:13:07.842 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.728
+2025-02-19 10:13:07.865 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:08.409 - RealTimeSTT: root - DEBUG - Realtime text detected:  He's a model.
+2025-02-19 10:13:08.610 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 103936
+2025-02-19 10:13:08.610 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:06.496
+2025-02-19 10:13:08.644 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:09.205 - RealTimeSTT: root - DEBUG - Realtime text detected:  We're going to die. We're going to die.
+2025-02-19 10:13:09.406 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 116224
+2025-02-19 10:13:09.406 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:07.264
+2025-02-19 10:13:09.438 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:10.024 - RealTimeSTT: root - DEBUG - Realtime text detected:  What we have to do in the past is our structure. Let's go!
+2025-02-19 10:13:10.225 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 129536
+2025-02-19 10:13:10.225 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.096
+2025-02-19 10:13:10.275 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.640 of audio
+2025-02-19 10:13:10.313 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:10.316 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 131072
+2025-02-19 10:13:10.316 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:10.407 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:10.409 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:10.426 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:11.014 - RealTimeSTT: root - DEBUG - Realtime text detected:  What are we going to do today? We're going to make a structure.
+2025-02-19 10:13:11.252 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:11.281 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.87 seconds
+2025-02-19 10:13:11.282 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:11.282 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:11.286 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:11.464 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:11.464 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:11.464 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:11.464 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:11.665 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:11.665 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:11.674 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:12.190 - RealTimeSTT: root - DEBUG - Realtime text detected:  Yeah.
+2025-02-19 10:13:12.390 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:12.390 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:12.401 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.832 of audio
+2025-02-19 10:13:12.887 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm sorry.
+2025-02-19 10:13:13.089 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:13:13.089 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:13:13.106 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:13.123 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:13.124 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 43008
+2025-02-19 10:13:13.124 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:13.154 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:13.157 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:13.158 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:13.735 - RealTimeSTT: root - DEBUG - Realtime text detected:  You got it.
+2025-02-19 10:13:13.840 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:13.871 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 10:13:13.871 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:13.871 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:13.874 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:15.493 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:15.493 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:15.493 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:15.493 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:15.704 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:15.704 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:15.713 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:16.210 - RealTimeSTT: root - DEBUG - Realtime text detected:  Now it's...
+2025-02-19 10:13:16.411 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:16.411 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:16.421 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:16.902 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:16.904 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 38912
+2025-02-19 10:13:16.904 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:16.942 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:16.945 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:16.956 - RealTimeSTT: root - DEBUG - Realtime text detected:  Now let's see.
+2025-02-19 10:13:16.965 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:17.564 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:17.608 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:13:17.608 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:17.609 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:17.610 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:18.186 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:18.186 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:18.186 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:18.187 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:18.396 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19456
+2025-02-19 10:13:18.396 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.216
+2025-02-19 10:13:18.413 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:18.934 - RealTimeSTT: root - DEBUG - Realtime text detected:  What's going on?
+2025-02-19 10:13:19.134 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 30720
+2025-02-19 10:13:19.134 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.920
+2025-02-19 10:13:19.143 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:19.651 - RealTimeSTT: root - DEBUG - Realtime text detected:  Waspah Miku is here.
+2025-02-19 10:13:19.853 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43008
+2025-02-19 10:13:19.853 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.688
+2025-02-19 10:13:19.864 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:20.414 - RealTimeSTT: root - DEBUG - Realtime text detected:  Well, for me who is here, who is here.
+2025-02-19 10:13:20.616 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55296
+2025-02-19 10:13:20.616 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.456
+2025-02-19 10:13:20.636 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.272 of audio
+2025-02-19 10:13:21.123 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:21.125 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 62976
+2025-02-19 10:13:21.125 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:21.191 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:21.194 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:21.203 - RealTimeSTT: root - DEBUG - Realtime text detected:  But for me it's pretty out here.
+2025-02-19 10:13:21.205 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:21.930 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:21.961 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.77 seconds
+2025-02-19 10:13:21.963 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:21.963 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:21.966 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:22.085 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:22.086 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:22.086 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:22.086 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:22.296 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:22.296 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:22.309 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:13:22.871 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's play the story again.
+2025-02-19 10:13:23.072 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:13:23.072 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:13:23.080 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:13:23.593 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm just sorry guys.
+2025-02-19 10:13:23.794 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:13:23.794 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:13:23.804 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:13:24.263 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:24.264 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 51200
+2025-02-19 10:13:24.265 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:24.327 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'll fix it
+2025-02-19 10:13:24.336 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:24.338 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:24.339 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:24.898 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:24.952 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.61 seconds
+2025-02-19 10:13:24.953 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:24.953 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:24.956 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:27.012 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:27.014 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:27.014 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:27.014 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:27.233 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:27.233 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:27.241 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.560 of audio
+2025-02-19 10:13:27.751 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hahaha.
+2025-02-19 10:13:27.952 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:27.952 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:27.966 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.088 of audio
+2025-02-19 10:13:28.455 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hahaha.
+2025-02-19 10:13:28.613 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:28.614 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 41984
+2025-02-19 10:13:28.614 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:28.629 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:28.631 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:28.638 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:28.655 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:13:28.655 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:13:28.656 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:28.658 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:13:29.181 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:29.191 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.56 seconds
+2025-02-19 10:13:29.191 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:29.193 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:29.196 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:29.763 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:29.763 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:29.764 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:29.764 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:29.979 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:29.980 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:29.987 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:30.487 - RealTimeSTT: root - DEBUG - Realtime text detected:  That was a minute.
+2025-02-19 10:13:30.688 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:30.688 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:30.699 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:31.246 - RealTimeSTT: root - DEBUG - Realtime text detected:  That was a minute.
+2025-02-19 10:13:31.447 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:13:31.447 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:13:31.460 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:31.984 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh my God, it's so hot!
+2025-02-19 10:13:32.186 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 54784
+2025-02-19 10:13:32.186 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.424
+2025-02-19 10:13:32.201 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:32.770 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh my God, it's so hot.
+2025-02-19 10:13:32.970 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 68096
+2025-02-19 10:13:32.970 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.256
+2025-02-19 10:13:32.986 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:33.551 - RealTimeSTT: root - DEBUG - Realtime text detected:  A minute.
+2025-02-19 10:13:33.753 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 80384
+2025-02-19 10:13:33.753 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.024
+2025-02-19 10:13:33.771 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.080 of audio
+2025-02-19 10:13:33.993 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:33.996 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 83968
+2025-02-19 10:13:33.996 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:34.088 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:34.091 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:34.093 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:34.324 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, my God.
+2025-02-19 10:13:34.720 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:34.756 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:13:34.756 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:34.757 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:34.759 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:34.884 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:34.884 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:34.884 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:34.884 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:35.094 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:35.094 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:35.100 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:35.641 - RealTimeSTT: root - DEBUG - Realtime text detected:  So, that would be good.
+2025-02-19 10:13:35.841 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:35.841 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:35.850 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:36.413 - RealTimeSTT: root - DEBUG - Realtime text detected:  So, let's take a look at this.
+2025-02-19 10:13:36.424 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:36.425 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 40960
+2025-02-19 10:13:36.425 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:36.523 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:36.524 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:36.525 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:36.614 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:13:36.614 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:13:36.616 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:36.618 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:13:37.242 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:37.290 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.76 seconds
+2025-02-19 10:13:37.291 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:37.291 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:37.294 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:38.533 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:38.533 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:38.533 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:38.533 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:38.749 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:38.749 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:38.760 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:39.306 - RealTimeSTT: root - DEBUG - Realtime text detected:  Hey, don't be scared.
+2025-02-19 10:13:39.508 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:13:39.508 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:13:39.516 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:39.884 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:39.885 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 37888
+2025-02-19 10:13:39.885 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:39.962 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:39.965 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:39.969 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:40.063 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's just a little bit.
+2025-02-19 10:13:40.588 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:40.627 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:13:40.628 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:40.628 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:40.630 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:41.543 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:41.543 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:41.543 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:41.544 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:41.746 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:41.746 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:41.753 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:13:42.263 - RealTimeSTT: root - DEBUG - Realtime text detected:  or...
+2025-02-19 10:13:42.464 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:42.464 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:42.472 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.480 of audio
+2025-02-19 10:13:42.694 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:42.696 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 34816
+2025-02-19 10:13:42.696 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:42.743 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:42.745 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:42.748 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:43.018 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, remix.
+2025-02-19 10:13:43.332 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:43.355 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.61 seconds
+2025-02-19 10:13:43.356 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:43.356 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:43.359 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:46.023 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:46.023 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:46.024 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:46.024 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:46.233 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:46.233 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:46.249 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:46.769 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:13:46.970 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:46.970 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:46.978 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:47.507 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:13:47.707 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:13:47.708 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:13:47.720 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.464 of audio
+2025-02-19 10:13:48.204 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:48.207 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 51200
+2025-02-19 10:13:48.207 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:48.236 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:48.242 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:48.261 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:48.363 - RealTimeSTT: root - DEBUG - Realtime text detected:  This is the first time I've ever heard of it.
+2025-02-19 10:13:48.885 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:48.906 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:13:48.907 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:48.907 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:48.909 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:49.223 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:49.223 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:49.223 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:49.223 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:49.436 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:49.436 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:49.446 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.208 of audio
+2025-02-19 10:13:49.992 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's see.
+2025-02-19 10:13:50.193 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:13:50.193 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:13:50.203 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.208 of audio
+2025-02-19 10:13:50.704 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you!
+2025-02-19 10:13:50.905 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:13:50.905 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:13:50.917 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.208 of audio
+2025-02-19 10:13:51.402 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:51.404 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 51200
+2025-02-19 10:13:51.404 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:51.429 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:51.433 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:51.439 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:51.451 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you!
+2025-02-19 10:13:52.132 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:52.148 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.72 seconds
+2025-02-19 10:13:52.149 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:52.149 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:52.153 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:52.363 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:52.363 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:52.364 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:52.364 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:52.566 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:52.566 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:52.572 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:13:53.120 - RealTimeSTT: root - DEBUG - Realtime text detected:  Because it's a sweet time.
+2025-02-19 10:13:53.321 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:53.321 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:53.330 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.144 of audio
+2025-02-19 10:13:53.512 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:13:53.515 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 34816
+2025-02-19 10:13:53.515 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:13:53.617 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:13:53.620 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:13:53.621 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:13:53.921 - RealTimeSTT: root - DEBUG - Realtime text detected:  Because it's a sweet time.
+2025-02-19 10:13:54.251 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:13:54.284 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:13:54.285 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:13:54.285 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:13:54.287 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:13:54.472 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:13:54.472 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:13:54.472 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:13:54.472 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:13:54.690 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:13:54.690 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:13:54.699 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:55.227 - RealTimeSTT: root - DEBUG - Realtime text detected:  Just leave.
+2025-02-19 10:13:55.428 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:13:55.428 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:13:55.444 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:55.976 - RealTimeSTT: root - DEBUG - Realtime text detected:  Yeah, yeah, yeah, yeah, yeah
+2025-02-19 10:13:56.177 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:13:56.177 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:13:56.194 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.064 of audio
+2025-02-19 10:13:56.761 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go, let's go.
+2025-02-19 10:13:56.962 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:13:56.962 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:13:56.991 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:57.584 - RealTimeSTT: root - DEBUG - Realtime text detected:  I love you, I love you, I love you, I love you.
+2025-02-19 10:13:57.785 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 69120
+2025-02-19 10:13:57.785 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.320
+2025-02-19 10:13:57.807 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:58.399 - RealTimeSTT: root - DEBUG - Realtime text detected:  We're going to show you the truth, we're going to do this.
+2025-02-19 10:13:58.600 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 82432
+2025-02-19 10:13:58.600 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.152
+2025-02-19 10:13:58.624 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:59.175 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:13:59.376 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 94720
+2025-02-19 10:13:59.376 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.920
+2025-02-19 10:13:59.404 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:13:59.965 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:14:00.165 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 108032
+2025-02-19 10:14:00.165 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:06.752
+2025-02-19 10:14:00.201 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:14:00.811 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go, let's go.
+2025-02-19 10:14:01.012 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 121344
+2025-02-19 10:14:01.013 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:07.584
+2025-02-19 10:14:01.048 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.048 of audio
+2025-02-19 10:14:01.611 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:14:01.812 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 133632
+2025-02-19 10:14:01.812 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.352
+2025-02-19 10:14:01.848 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.448 of audio
+2025-02-19 10:14:02.283 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:02.287 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 141312
+2025-02-19 10:14:02.287 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:02.302 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:02.304 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:02.306 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:02.403 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:14:03.035 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:03.073 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.77 seconds
+2025-02-19 10:14:03.074 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:03.074 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:03.077 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:04.324 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:04.324 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:04.324 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:04.324 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:04.537 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:04.538 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:04.546 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:05.093 - RealTimeSTT: root - DEBUG - Realtime text detected:  Look at this.
+2025-02-19 10:14:05.294 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:05.294 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:05.306 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:05.811 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go
+2025-02-19 10:14:06.013 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:14:06.013 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:14:06.032 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:06.562 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go!
+2025-02-19 10:14:06.764 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:14:06.764 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:14:06.783 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:07.378 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's pull it, let's go!
+2025-02-19 10:14:07.579 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 68096
+2025-02-19 10:14:07.579 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.256
+2025-02-19 10:14:07.600 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:08.134 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go!
+2025-02-19 10:14:08.334 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 80384
+2025-02-19 10:14:08.334 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.024
+2025-02-19 10:14:08.353 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:08.874 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:14:09.075 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 92672
+2025-02-19 10:14:09.075 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.792
+2025-02-19 10:14:09.100 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:09.640 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's too late, it's too late.
+2025-02-19 10:14:09.841 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 104960
+2025-02-19 10:14:09.841 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:06.560
+2025-02-19 10:14:09.868 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:10.467 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's too late, it's too late.
+2025-02-19 10:14:10.667 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 118272
+2025-02-19 10:14:10.667 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:07.392
+2025-02-19 10:14:10.696 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:11.225 - RealTimeSTT: root - DEBUG - Realtime text detected:  Let's go, let's go.
+2025-02-19 10:14:11.426 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 129536
+2025-02-19 10:14:11.426 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.096
+2025-02-19 10:14:11.464 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:12.009 - RealTimeSTT: root - DEBUG - Realtime text detected:  I don't know. I don't know.
+2025-02-19 10:14:12.211 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 142848
+2025-02-19 10:14:12.211 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.928
+2025-02-19 10:14:12.250 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:12.797 - RealTimeSTT: root - DEBUG - Realtime text detected:  I love pooping here
+2025-02-19 10:14:12.998 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 155136
+2025-02-19 10:14:12.999 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:09.696
+2025-02-19 10:14:13.043 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:13.584 - RealTimeSTT: root - DEBUG - Realtime text detected:  I love pooping here
+2025-02-19 10:14:13.603 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:13.605 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 164864
+2025-02-19 10:14:13.606 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:13.613 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:13.616 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:13.617 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:13.785 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:14:13.785 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:14:13.786 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:13.788 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:14:14.250 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:14.281 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:14:14.282 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:14.282 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:14.284 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:15.653 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:15.653 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:15.653 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:15.653 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:15.858 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:15.858 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:15.866 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:14:16.356 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, wait!
+2025-02-19 10:14:16.557 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:14:16.557 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:14:16.565 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.800 of audio
+2025-02-19 10:14:17.058 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh wait!
+2025-02-19 10:14:17.259 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:14:17.259 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:14:17.269 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.496 of audio
+2025-02-19 10:14:17.780 - RealTimeSTT: root - DEBUG - Realtime text detected:  Oh, wait!
+2025-02-19 10:14:17.893 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:17.894 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 52224
+2025-02-19 10:14:17.894 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:17.907 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:17.912 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:17.921 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:17.981 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:14:17.981 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:14:17.981 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:17.983 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:14:18.541 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:18.574 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:14:18.575 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:18.575 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:18.577 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:19.113 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:19.113 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:19.113 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:19.113 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:19.324 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:19.324 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:19.334 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:19.887 - RealTimeSTT: root - DEBUG - Realtime text detected:  I love you, please hear him.
+2025-02-19 10:14:20.089 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:20.089 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:20.098 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:20.657 - RealTimeSTT: root - DEBUG - Realtime text detected:  I love you, please. I love you.
+2025-02-19 10:14:20.773 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:20.774 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 43008
+2025-02-19 10:14:20.774 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:20.841 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:20.845 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:20.845 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:20.858 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:14:20.858 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:14:20.859 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:20.861 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:14:21.491 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:21.506 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:14:21.508 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:21.508 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:21.510 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:23.203 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:23.203 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:23.203 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:23.204 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:23.419 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:23.419 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:23.429 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:23.976 - RealTimeSTT: root - DEBUG - Realtime text detected:  I don't believe you.
+2025-02-19 10:14:24.177 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:24.177 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:24.191 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:24.750 - RealTimeSTT: root - DEBUG - Realtime text detected:  That's me, that's me.
+2025-02-19 10:14:24.951 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:14:24.951 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:14:24.975 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:25.383 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:25.384 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 51200
+2025-02-19 10:14:25.384 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:25.388 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:25.391 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:25.393 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:25.608 - RealTimeSTT: root - DEBUG - Realtime text detected:  It's okay, it's okay.
+2025-02-19 10:14:26.027 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:26.055 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.66 seconds
+2025-02-19 10:14:26.057 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:26.057 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:26.061 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:26.153 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:26.153 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:26.153 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:26.154 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:26.358 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:26.358 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:26.367 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:26.915 - RealTimeSTT: root - DEBUG - Realtime text detected:  So close.
+2025-02-19 10:14:27.116 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:27.116 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:27.125 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:27.643 - RealTimeSTT: root - DEBUG - Realtime text detected:  So it's been here.
+2025-02-19 10:14:27.844 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:14:27.844 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:14:27.857 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:28.391 - RealTimeSTT: root - DEBUG - Realtime text detected:  So it's over here.
+2025-02-19 10:14:28.593 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:14:28.593 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:14:28.611 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.368 of audio
+2025-02-19 10:14:28.903 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:28.905 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 60416
+2025-02-19 10:14:28.905 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:28.935 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:28.938 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:28.938 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:29.213 - RealTimeSTT: root - DEBUG - Realtime text detected:  So, stay here. I would like to listen. I sing.
+2025-02-19 10:14:29.669 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:29.703 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.76 seconds
+2025-02-19 10:14:29.704 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:29.704 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:29.708 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:32.803 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:32.804 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:32.804 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:32.804 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:33.007 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:33.007 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:33.021 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.528 of audio
+2025-02-19 10:14:33.529 - RealTimeSTT: root - DEBUG - Realtime text detected:  I don't think so
+2025-02-19 10:14:33.730 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:14:33.730 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:14:33.750 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.528 of audio
+2025-02-19 10:14:34.242 - RealTimeSTT: root - DEBUG - Realtime text detected:  Don't do this.
+2025-02-19 10:14:34.403 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:34.404 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 41984
+2025-02-19 10:14:34.404 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:34.443 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:14:34.443 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:14:34.443 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:14:34.445 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:14:34.492 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:34.498 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:34.515 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:35.042 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:35.057 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.56 seconds
+2025-02-19 10:14:35.058 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:35.058 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:35.061 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:35.243 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:35.243 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:35.243 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:35.244 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:35.461 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:35.461 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:35.474 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.112 of audio
+2025-02-19 10:14:36.017 - RealTimeSTT: root - DEBUG - Realtime text detected:  What the hell is that?
+2025-02-19 10:14:36.218 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:36.218 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:36.228 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.112 of audio
+2025-02-19 10:14:36.767 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'll see you later.
+2025-02-19 10:14:36.968 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:14:36.969 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:14:36.984 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.112 of audio
+2025-02-19 10:14:37.533 - RealTimeSTT: root - DEBUG - Realtime text detected:  What's up? What's up?
+2025-02-19 10:14:37.735 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 56832
+2025-02-19 10:14:37.735 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.552
+2025-02-19 10:14:37.750 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.112 of audio
+2025-02-19 10:14:38.260 - RealTimeSTT: root - DEBUG - Realtime text detected:  I'm going to do it.
+2025-02-19 10:14:38.460 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 68096
+2025-02-19 10:14:38.460 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.256
+2025-02-19 10:14:38.486 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.112 of audio
+2025-02-19 10:14:38.884 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:38.887 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 74752
+2025-02-19 10:14:38.887 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:38.944 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:38.948 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:38.955 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:39.133 - RealTimeSTT: root - DEBUG - Realtime text detected:  But I have a beer, huh? I don't know. I don't know. It's a beer.
+2025-02-19 10:14:39.615 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:39.661 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.71 seconds
+2025-02-19 10:14:39.661 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:39.661 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:39.663 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:40.803 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:40.803 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:40.803 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:40.804 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:41.020 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:41.020 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:41.026 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.240 of audio
+2025-02-19 10:14:41.558 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:14:41.759 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:14:41.759 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:14:41.771 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.240 of audio
+2025-02-19 10:14:42.313 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you very much.
+2025-02-19 10:14:42.514 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:14:42.514 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:14:42.525 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.240 of audio
+2025-02-19 10:14:42.793 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:14:42.794 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 48128
+2025-02-19 10:14:42.795 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:14:42.833 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:14:42.836 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:14:42.837 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:14:43.132 - RealTimeSTT: root - DEBUG - Realtime text detected:  I don't know what to do.
+2025-02-19 10:14:43.527 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:14:43.551 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.72 seconds
+2025-02-19 10:14:43.553 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:14:43.553 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:14:43.557 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:14:44.903 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:14:44.904 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:14:44.904 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:14:44.904 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:14:45.105 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:14:45.106 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:14:45.119 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:45.691 - RealTimeSTT: root - DEBUG - Realtime text detected:  You can't do that.
+2025-02-19 10:14:45.891 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 32256
+2025-02-19 10:14:45.891 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.016
+2025-02-19 10:14:45.902 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:14:46.431 - RealTimeSTT: root - DEBUG - Realtime text detected:  You can't do that.
+2025-02-19 10:14:46.633 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 44544
+2025-02-19 10:14:46.633 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.784
+2025-02-19 10:14:46.644 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.992 of audio
+2025-02-19 10:14:47.200 - RealTimeSTT: root - DEBUG - Realtime text detected:  You're going to be like this.
+2025-02-19 10:14:47.401 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 55808
+2025-02-19 10:14:47.401 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:03.488
+2025-02-19 10:14:47.415 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.696 of audio
+2025-02-19 10:14:47.963 - RealTimeSTT: root - DEBUG - Realtime text detected:  You're going to be like this.
+2025-02-19 10:14:48.164 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 69120
+2025-02-19 10:14:48.164 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.320
+2025-02-19 10:14:48.184 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:02.528 of audio
+2025-02-19 10:14:48.721 - RealTimeSTT: root - INFO - KeyboardInterrupt in wait_audio, shutting down
+2025-02-19 10:14:48.722 - RealTimeSTT: root - DEBUG - Finishing recording thread
+2025-02-19 10:14:48.733 - RealTimeSTT: root - DEBUG - Realtime text detected:  You're going to be like this.
+2025-02-19 10:14:48.736 - RealTimeSTT: root - DEBUG - Terminating reader process
+2025-02-19 10:14:49.384 - RealTimeSTT: root - DEBUG - Terminating transcription process
+2025-02-19 10:14:49.388 - RealTimeSTT: root - DEBUG - Finishing realtime thread
+2025-02-19 10:14:49.503 - RealTimeSTT: root - INFO - KeyboardInterrupt in text() method
+2025-02-19 10:30:51.428 - RealTimeSTT: root - INFO - Starting RealTimeSTT
+2025-02-19 10:30:51.441 - RealTimeSTT: root - INFO - Initializing audio recording (creating pyAudio input stream, sample rate: 16000 buffer size: 512
+2025-02-19 10:30:51.451 - RealTimeSTT: root - INFO - Initializing faster_whisper realtime transcription model tiny, default device: cpu, compute type: default, device index: 0, download root: None
+2025-02-19 10:30:51.461 - RealTimeSTT: urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-02-19 10:30:51.749 - RealTimeSTT: urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/Systran/faster-whisper-tiny/revision/main HTTP/1.1" 200 1871
+2025-02-19 10:30:52.073 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.000
+2025-02-19 10:30:52.089 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.000 of audio
+2025-02-19 10:30:52.096 - RealTimeSTT: root - DEBUG - Faster_whisper realtime speech to text transcription model initialized successfully
+2025-02-19 10:30:52.096 - RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-02-19 10:30:52.096 - RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-02-19 10:30:52.285 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg6
+2025-02-19 10:30:52.292 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg6 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg6.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:30:52.292 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg5
+2025-02-19 10:30:52.299 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg5 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg5.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:30:52.299 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg4
+2025-02-19 10:30:52.305 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg4 extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torch\_ops.py", line 1357, in load_library
+    ctypes.CDLL(path)
+  File "C:\Users\leapo\miniconda3\Lib\ctypes\__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: Could not find module 'C:\Users\leapo\miniconda3\Lib\site-packages\torio\lib\libtorio_ffmpeg4.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+2025-02-19 10:30:52.306 - RealTimeSTT: torio._extension.utils - DEBUG - Loading FFmpeg
+2025-02-19 10:30:52.306 - RealTimeSTT: torio._extension.utils - DEBUG - Failed to load FFmpeg extension.
+Traceback (most recent call last):
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leapo\miniconda3\Lib\site-packages\torio\_extension\utils.py", line 106, in _find_versionsed_ffmpeg_extension
+    raise RuntimeError(f"FFmpeg{version} extension is not available.")
+RuntimeError: FFmpeg extension is not available.
+2025-02-19 10:30:52.570 - RealTimeSTT: root - DEBUG - Silero VAD voice activity detection engine initialized successfully
+2025-02-19 10:30:52.570 - RealTimeSTT: root - DEBUG - Starting realtime worker
+2025-02-19 10:30:52.570 - RealTimeSTT: root - DEBUG - Waiting for main transcription model to start
+2025-02-19 10:31:01.365 - RealTimeSTT: root - DEBUG - Main transcription model ready
+2025-02-19 10:31:01.367 - RealTimeSTT: root - DEBUG - RealtimeSTT initialization completed successfully
+2025-02-19 10:31:01.368 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:31:01.368 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:31:01.373 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:31:02.486 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:31:02.486 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:31:02.487 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:31:02.488 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:31:02.694 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:31:02.694 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:31:02.722 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:03.896 - RealTimeSTT: root - DEBUG - Realtime text detected:  You're just a man.
+2025-02-19 10:31:04.098 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 42496
+2025-02-19 10:31:04.099 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.656
+2025-02-19 10:31:04.146 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:05.292 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you for watching.
+2025-02-19 10:31:05.493 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 65024
+2025-02-19 10:31:05.494 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:04.064
+2025-02-19 10:31:05.554 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:06.697 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you
+2025-02-19 10:31:06.897 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 87552
+2025-02-19 10:31:06.897 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:05.472
+2025-02-19 10:31:06.990 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:07.812 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you
+2025-02-19 10:31:08.013 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 104960
+2025-02-19 10:31:08.013 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:06.560
+2025-02-19 10:31:08.053 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:08.574 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you
+2025-02-19 10:31:08.776 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 117248
+2025-02-19 10:31:08.776 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:07.328
+2025-02-19 10:31:08.843 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:09.342 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:31:09.543 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 129536
+2025-02-19 10:31:09.543 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.096
+2025-02-19 10:31:09.584 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:10.083 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you
+2025-02-19 10:31:10.284 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 140800
+2025-02-19 10:31:10.284 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:08.800
+2025-02-19 10:31:10.321 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:10.811 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:31:10.994 - RealTimeSTT: root - INFO - recording stopped
+2025-02-19 10:31:10.998 - RealTimeSTT: root - DEBUG - No samples removed, final audio length: 152576
+2025-02-19 10:31:10.999 - RealTimeSTT: root - INFO - State changed from 'recording' to 'inactive'
+2025-02-19 10:31:11.012 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 0
+2025-02-19 10:31:11.012 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:00.000
+2025-02-19 10:31:11.012 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.000 of audio
+2025-02-19 10:31:11.014 - RealTimeSTT: root - DEBUG - Realtime text detected: 
+2025-02-19 10:31:11.029 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'transcribing'
+2025-02-19 10:31:11.032 - RealTimeSTT: root - DEBUG - Adding transcription request, no early transcription started
+2025-02-19 10:31:11.044 - RealTimeSTT: root - DEBUG - Receive from parent_transcription_pipe after sendiung transcription request, transcribe_count: 1
+2025-02-19 10:31:11.661 - RealTimeSTT: root - INFO - State changed from 'transcribing' to 'inactive'
+2025-02-19 10:31:11.699 - RealTimeSTT: root - DEBUG - Model tiny completed transcription in 0.67 seconds
+2025-02-19 10:31:11.699 - RealTimeSTT: root - INFO - Setting listen time
+2025-02-19 10:31:11.699 - RealTimeSTT: root - INFO - State changed from 'inactive' to 'listening'
+2025-02-19 10:31:11.701 - RealTimeSTT: root - DEBUG - Waiting for recording start
+2025-02-19 10:31:13.746 - RealTimeSTT: root - INFO - voice activity detected
+2025-02-19 10:31:13.746 - RealTimeSTT: root - INFO - recording started
+2025-02-19 10:31:13.746 - RealTimeSTT: root - INFO - State changed from 'listening' to 'recording'
+2025-02-19 10:31:13.747 - RealTimeSTT: root - DEBUG - Waiting for recording stop
+2025-02-19 10:31:13.963 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 19968
+2025-02-19 10:31:13.963 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.248
+2025-02-19 10:31:13.972 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.432 of audio
+2025-02-19 10:31:14.493 - RealTimeSTT: root - DEBUG - Realtime text detected:  Okay.
+2025-02-19 10:31:14.693 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 31232
+2025-02-19 10:31:14.693 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:01.952
+2025-02-19 10:31:14.702 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:00.512 of audio
+2025-02-19 10:31:15.249 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:31:15.449 - RealTimeSTT: root - DEBUG - Current realtime buffer size: 43520
+2025-02-19 10:31:15.449 - RealTimeSTT: faster_whisper - INFO - Processing audio with duration 00:02.720
+2025-02-19 10:31:15.464 - RealTimeSTT: faster_whisper - INFO - VAD filter removed 00:01.280 of audio
+2025-02-19 10:31:15.514 - RealTimeSTT: root - INFO - KeyboardInterrupt in wait_audio, shutting down
+2025-02-19 10:31:15.515 - RealTimeSTT: root - DEBUG - Finishing recording thread
+2025-02-19 10:31:15.529 - RealTimeSTT: root - DEBUG - Terminating reader process
+2025-02-19 10:31:16.046 - RealTimeSTT: root - DEBUG - Realtime text detected:  Thank you.
+2025-02-19 10:31:16.343 - RealTimeSTT: root - DEBUG - Terminating transcription process
+2025-02-19 10:31:16.343 - RealTimeSTT: root - DEBUG - Finishing realtime thread
+2025-02-19 10:31:16.505 - RealTimeSTT: root - INFO - KeyboardInterrupt in text() method
