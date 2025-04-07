@@ -4,7 +4,7 @@ from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional,
 import numpy as np
 import cv2
 from typing import List
-from core.models.lip_tracking.VisualizeLip import LipTracking
+from core.models.VisualizeLip import LipTracking
 
 # ==================== Classe pour le modèle de transcription labiale ==================== #
 class LipReadingModel:
@@ -16,7 +16,7 @@ class LipReadingModel:
         
         # Construire et charger le modèle de transcription labiale
         self.model = self.build_model()
-        self.model.load_weights('./models/pretrained/lipread_tensorflow/checkpoint')
+        self.model.load_weights('./core/models/pretrained/checkpoint')
     
     def build_model(self) -> Sequential: 
         model = Sequential()

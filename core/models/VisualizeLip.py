@@ -5,7 +5,7 @@ import dlib
 class LipTracking:
     def __init__(self):
         # Initialisation des détecteurs et prédicteurs de dlib
-        predictor_path = 'data/raw/lip_reading_dlib/shape_predictor_68_face_landmarks.dat'
+        predictor_path = 'core/models/lip_reading_dlib/shape_predictor_68_face_landmarks.dat'
         self.detector = dlib.get_frontal_face_detector()
         self.predictor = dlib.shape_predictor(predictor_path)
         self.width_crop_max = 0
