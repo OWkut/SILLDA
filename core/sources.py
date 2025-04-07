@@ -25,6 +25,9 @@ class BaseStream:
     
     def process_frame(self, frame):
         """Traite une frame avec lip tracking et lip reading"""
+        # Convertir l'image jpg en float32 pour le traitement
+        frame = np.frombuffer(frame, np.uint8)
+
         # Convertir l'image en RGB pour le traitement
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         

@@ -91,6 +91,7 @@ class LipReadingModel:
         frames = self.normalized_frames(frames)  # Normaliser les frames
         frames = np.expand_dims(frames, axis=0)  # Ajouter une dimension pour le batch
         yhat = self.model.predict(frames)
+        #print(yhat)
         decoder = tf.keras.backend.ctc_decode(yhat, [75], greedy=True)[0][0].numpy()
         return tf.strings.reduce_join(self.num_to_char(decoder)).numpy().decode('utf-8')
 

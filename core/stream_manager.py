@@ -1,7 +1,7 @@
 import time
 from threading import Lock
 from core.fps_monitor import FPSMonitor
-from core.sources_deepseek import WebcamStream, FileVideoStream
+from core.sources import WebcamStream, FileVideoStream
 
 
 class StreamManager:
