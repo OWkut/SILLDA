@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webcam - SILLDA</title>
+  <link rel="stylesheet" href="../static/CSS/main.css" />
+</head>
+<body>
+
+  <div class="controls-left">
+    <button onclick="toggleMenu('left')"><img src="../static/icones/icone_menu.png" alt="Menu Gauche"/></button>
+  </div>
+
+  <div class="controls-right">
+    <button onclick="toggleMenu('right')"><img src="../static/icones/icone_menu.png" alt="Menu Droit"/></button>
+  </div>
+
+  <div class="icon-bar">
+    <img src="../static/icones/video.png" alt="video" id="videoTab">
+    <a href="/webcam"><img src="../static/icones/webcam.png" alt="webcam"></a>
+  </div>
+
+  <div class="container">
+    
+    <div class="menu left" id="menuLeft">
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="showTab('videosTab')">🎬</button>
+        <button class="tab-btn" onclick="showTab('filtersTab')">🎨</button>
+        <button class="tab-btn" onclick="showTab('transcriptTab')">📝</button>
+      </div>
+
+      <div class="tab-content" id="videosTab">
+        <h2>Vidéos enregistrées</h2>
+        {% if videos %}
+          <ul>
+            {% for vid in videos %}
+              <li>
+                <a href="{{ url_for('play_video', filename=vid) }}">{{ vid }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Aucune vidéo disponible.</p>
+        {% endif %}
+      </div>
+
+      <div class="tab-content" id="filtersTab" style="display: none;">
+        <h2>Filtres vidéo</h2>
+        <p>(À implémenter : liste de filtres à cocher ou dropdown)</p>
+      </div>
+
+      <div class="tab-content" id="transcriptTab" style="display: none;">
+        <h2>Retranscription complète</h2>
+        <div id="fullTranscription" style="max-height: 300px; overflow-y: auto;">
+          <p>Pas de retranscription encore.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="center">
+      {% if use_webcam %}
+        <h1 class="video-title">Flux webcam</h1>
+        <div class="video-container">
+          <img src="{{ url_for('video_feed', source='webcam') }}" width="640" />
+        </div>
+        
+        <div class="transcription-box" id="transcription">
+          Retranscription orale ici...
+        </div>
+
+      {% elif video %}
+        <h1 class="video-title">Lecture : {{ video }}</h1>
+
+        <div class="video-container">
+          <img id="videoStream" src="{{ url_for('video_feed', source=video) }}" width="640" />
+        </div>
+
+        <audio controls autoplay>
+          <source src="/audio/ma_video.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="video-controls">
+          <button onclick="pauseStream()">⏸ Pause</button>
+          <button onclick="resumeStream()">▶ Reprendre</button>
+        </div>
+
+        <div class="transcription-box" id="transcription">
+          Retranscription orale ici...
+        </div>
+      {% else %}
+        <h1>Zone Centrale</h1>
+        <p>Aucune vidéo sélectionnée.</p>
+      {% endif %}
+    </div>
+
+    <div class="menu right" id="menuRight">
+      <h2>Statistiques du flux</h2>
+      <ul>
+        <li>FPS Actuel : <span id="fpsCurrent">-</span></li>
+        <li>FPS Min : <span id="fpsMin">-</span></li>
+        <li>FPS Max : <span id="fpsMax">-</span></li>
+        <li>FPS Moyen : <span id="fpsAvg">-</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Fenêtre modale -->
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Ajouter une vidéo</h2>
+      <form id="videoForm" method="POST" enctype="multipart/form-data" action="/upload">
+        <label for="title">Titre de la vidéo</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="url">URL de la vidéo (YouTube ou autre)</label>
+        <input type="url" id="url" name="url">
+
+        <label for="file">Ou uploader une vidéo locale</label>
+        <input type="file" id="file" name="file" accept="video/*">
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../static/JS/menu.js"></script>
+</body>
+</html>
