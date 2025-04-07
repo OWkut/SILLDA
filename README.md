@@ -1,30 +1,59 @@
-# SILLDA
+# 🎥 Flask Video Streaming App
 
-# Lip Reading App  
+Une application Flask modulaire pour :
+- Diffuser la webcam ou une vidéo uploadée avec OpenCV
+- Afficher les FPS (actuel / min / max / moyen)
+- Mettre en pause ou reprendre le flux en temps réel
+- Système de menu dynamique et modulaire en HTML/CSS/JS
 
-Une application de reconnaissance labiale utilisant l'intelligence artificielle.  
+---
 
-## Structure du projet  
+## 📁 Arborescence du projet
 
-Voici l'organisation des fichiers et dossiers du projet :  
+```
+WEB_VERSION/
+├── app.py                      # Point d'entrée principal Flask
+├── uploads/                   # Vidéos uploadées par l'utilisateur
+├── templates/
+│   └── index.html             # Interface utilisateur principale
+├── static/
+│   ├── style.css              # Feuilles de style CSS
+│   └── script.js              # Logique frontend JS
+├── core/                      # Logique métier (modulaire)
+│   ├── __init__.py
+│   ├── fps_monitor.py         # Calculs de FPS en temps réel
+│   ├── sources.py             # Classes WebcamStream et FileVideoStream
+│   └── stream_manager.py      # Contrôleur principal du flux (play/pause, FPS)
+└── tests/                     # Tests unitaires avec pytest
+    ├── test_fps_monitor.py
+    └── test_stream_manager.py
+```
 
-```plaintext
-├── data/
-│   ├── raw/                  # Données brutes (vidéos, images)
-│   ├── processed/            # Données prétraitées
-├── models/
-│   ├── pretrained/           # Modèles pré-entraînés
-│   └── trained/              # Modèles que vous entraînez
-├── src/
-│   ├── lip_tracking/         # Code pour le suivi des lèvres
-│   ├── feature_extraction/   # Code pour l'extraction des caractéristiques
-│   ├── lip_reading/          # Code pour la reconnaissance labiale
-│   ├── utils/                # Fonctions utilitaires (prétraitement, post-traitement)
-│   ├── webcam/               # Code pour l'utilisation de la webcam en temps reel
-│   └── app.py                # Script principal pour l'application
-├── tests/                    # Tests unitaires et d'intégration
-├── notebooks/                # Notebooks Jupyter pour l'expérimentation
-├── requirements.txt          # Liste des dépendances Python
-├── README.md                 # Documentation du projet
-├── setup.py                  # Script d'installation (si nécessaire)
-└── .gitignore                # Fichiers et dossiers à ignorer par Git
+---
+
+## ⚙️ Installation & lancement
+
+### 1. Installer les dépendances
+```bash
+pip install flask opencv-python pytest
+```
+
+### 2. Lancer le serveur Flask
+```bash
+python app.py
+```
+
+Accéder à l'application sur [http://localhost:5000](http://localhost:5000)
+
+---
+
+## ✅ Fonctionnalités principales
+
+- 📷 Diffusion webcam avec OpenCV
+- 📂 Lecture de vidéos uploadées
+- ⏸ Play / Pause du flux (côté serveur)
+- 📊 Monitoring FPS dynamique (JSON + JS)
+- 🎨 Interface modulaire avec onglets/menu
+- 🧪 Tests unitaires pour les modules critiques
+
+---
