@@ -293,7 +293,7 @@ class MainWindowUi(QMainWindow):
                 # 🔹 Prédire le texte toutes les 75 frames
                 if len(self.frames) >= 75:
                     frames_np = np.array(self.frames[-75:])  # Convertir la liste en tableau numpy
-                    normalized_frames = self.lip_reading_model.normalized_frames(self.frames)
+                    normalized_frames = self.lip_reading_model.normalized_frames(frames_np) # Normaliser les frames
 
                     # # 🔹 Afficher la première frame normalisée
                     # normalized_frame = frames_np[0].numpy()  # Convertir en numpy array
