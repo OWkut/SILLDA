@@ -14,7 +14,7 @@ def install_requirements():
         sys.exit(1)
 
 def main():
-    print("🚀 Lancement du script principal...")
+    print("Lancement du script principal...")
     os.system(f"{sys.executable} main.py")
 
 if __name__ == "__main__":
