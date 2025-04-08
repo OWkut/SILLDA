@@ -1,6 +1,4 @@
-import os
 import tensorflow as tf
-import cv2
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv3D, LSTM, Dense, Dropout, Bidirectional, MaxPool3D, Activation, TimeDistributed, Flatten
