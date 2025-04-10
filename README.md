@@ -12,29 +12,29 @@ Une application Flask modulaire pour :
 
 ```
 WEB_VERSION/
-├── app.py                     # Point d'entrée principal Flask
-├── setup.py                   # Script d'installation des librairies
-├── uploads/                   # Vidéos uploadées par l'utilisateur
+├── app.py                                                 # Point d'entrée principal Flask
+├── setup.py                                               # Script d'installation des librairies
+├── uploads/                                               # Vidéos uploadées par l'utilisateur
 ├── templates/
-│   └── index.html             # Interface utilisateur principale
+│   └── index.html                                         # Interface utilisateur principale
 ├── static/
-│   ├── style.css              # Feuilles de style CSS
-│   └── script.js              # Logique frontend JS
-├── core/                      # Logique métier (modulaire)
+│   ├── style.css                                          # Feuilles de style CSS
+│   └── script.js                                          # Logique frontend JS
+├── core/                                                  # Logique métier (modulaire)
 │   ├── __init__.py
-│   ├── fps_monitor.py         # Calculs de FPS en temps réel
-│   ├── sources.py             # Classes WebcamStream et FileVideoStream
-│   ├── stream_manager.py      # Contrôleur principal du flux (play/pause, FPS)
+│   ├── fps_monitor.py                                     # Calculs de FPS en temps réel
+│   ├── sources.py                                         # Classes WebcamStream et FileVideoStream
+│   ├── stream_manager.py                                  # Contrôleur principal du flux (play/pause, FPS)
 │   └── models/
-|   |   ├── lip_reading_dlib/
-|   |   |   ├── shape_predictor_68_face_landmarks.dat
+|   |   ├── lip_tracking_dlib/
+|   |   |   ├── shape_predictor_68_face_landmarks.dat      # Poids du modèle de trackind des lèvres
 |   |   ├── pretrained/
-|   |   |   ├── checkpoint
+|   |   |   ├── checkpoint                                 # Poids du modèle de retranscription labiale
 |   |   |   ├── checkpoint.data-00000-of-00001
 |   |   |   ├── checkpoint.index
-|   |   ├── VisualizeLip.py
-|   |   ├── LipReadingModel.py
-└── tests/                     # Tests unitaires avec pytest
+|   |   ├── VisualizeLip.py                                # Classe de lip tracking
+|   |   ├── LipReadingModel.py                             # Classe de retraznscription labiale
+└── tests/                                                 # Tests unitaires avec pytest
     ├── test_fps_monitor.py
     └── test_stream_manager.py
 ```
