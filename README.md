@@ -12,7 +12,8 @@ Une application Flask modulaire pour :
 
 ```
 WEB_VERSION/
-├── app.py                      # Point d'entrée principal Flask
+├── app.py                     # Point d'entrée principal Flask
+├── setup.py                   # Script d'installation des librairies
 ├── uploads/                   # Vidéos uploadées par l'utilisateur
 ├── templates/
 │   └── index.html             # Interface utilisateur principale
@@ -23,7 +24,16 @@ WEB_VERSION/
 │   ├── __init__.py
 │   ├── fps_monitor.py         # Calculs de FPS en temps réel
 │   ├── sources.py             # Classes WebcamStream et FileVideoStream
-│   └── stream_manager.py      # Contrôleur principal du flux (play/pause, FPS)
+│   ├── stream_manager.py      # Contrôleur principal du flux (play/pause, FPS)
+│   └── models/
+|   |   ├── lip_reading_dlib/
+|   |   |   ├── shape_predictor_68_face_landmarks.dat
+|   |   ├── pretrained/
+|   |   |   ├── checkpoint
+|   |   |   ├── checkpoint.data-00000-of-00001
+|   |   |   ├── checkpoint.index
+|   |   ├── VisualizeLip.py
+|   |   ├── LipReadingModel.py
 └── tests/                     # Tests unitaires avec pytest
     ├── test_fps_monitor.py
     └── test_stream_manager.py
