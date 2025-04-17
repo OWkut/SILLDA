@@ -2,7 +2,9 @@
 
 # Lip Reading App  
 
-Une application de reconnaissance labiale utilisant l'intelligence artificielle.  
+Une application de reconnaissance labiale utilisant l'intelligence artificielle. <br>
+<br>
+Liaison d'un modèle de liptracking : https://github.com/astorfi/lip-reading-deeplearning/tree/master pour la détection des lèvres, et d'un modèle de lipreading : https://github.com/skaty5678/lipread_tensorflow pour la retranscription.
 
 ## Structure du projet  
 
