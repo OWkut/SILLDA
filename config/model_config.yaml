@@ -1,0 +1,102 @@
+# Configuration des modèles SILLDA
+
+# Configuration du modèle de reconnaissance labiale
+lip_reading:
+  # Dimensions d'entrée
+  sequence_length: 75        # Nombre de frames dans une séquence
+  input_height: 46           # Hauteur de la frame labiale
+  input_width: 140          # Largeur de la frame labiale
+  input_channels: 1         # Niveaux de gris
+  
+  # Architecture du modèle
+  conv3d_filters: [128, 256, 75]  # Nombre de filtres pour chaque couche Conv3D
+  lstm_units: 128                 # Nombre d'unités dans les couches LSTM
+  dropout_rate: 0.5               # Taux de dropout
+  
+  # Vocabulaire
+  vocab_size: 39                  # Taille du vocabulaire (a-z, ponctuation, chiffres)
+  vocab: "abcdefghijklmnopqrstuvwxyz'?!123456789 "
+  
+  # Chemin du modèle pré-entraîné
+  pretrained_model_path: "./models/pretrained/checkpoint"
+  
+  # Paramètres d'inférence
+  batch_size: 1
+  use_gpu: true
+  gpu_memory_growth: true
+
+# Configuration de la transcription audio
+audio:
+  # Modèle Whisper
+  model: "medium"  # Options: tiny, base, small, medium, large, large-v2, large-v3
+  language: "en"   # Code langue ISO 639-1 (en, fr, es, etc.)
+  
+  # Paramètres de transcription en temps réel
+  realtime_processing_pause: 0.02  # Pause entre les mises à jour (secondes)
+  enable_realtime_transcription: true
+  
+  # Détection des pauses
+  end_of_sentence_detection_pause: 0.3    # Pause pour fin de phrase (secondes)
+  unknown_sentence_detection_pause: 0.5   # Pause par défaut (secondes)
+  mid_sentence_detection_pause: 1.5        # Pause pour phrase incomplète (secondes)
+  
+  # Voice Activity Detection (VAD)
+  vad_enabled: true
+  vad_threshold: 0.005  # Seuil d'amplitude pour la détection de voix
+  
+  # Filtrage audio
+  filter_low_amplitude: true
+  amplitude_threshold: 0.005
+
+# Configuration du suivi labial
+lip_tracking:
+  # dlib
+  predictor_path: "data/raw/lip_reading_dlib/shape_predictor_68_face_landmarks.dat"
+  
+  # Paramètres de détection
+  border_size: 30              # Taille de la bordure autour de la bouche (pixels)
+  lip_points_range: [48, 68]   # Indices des points labiaux dans les 68 points
+  
+  # Dimensions de sortie
+  output_height: 46
+  output_width: 140
+  
+  # Paramètres de suivi adaptatif
+  adaptive_crop: true
+  crop_update_rate: 1.5        # Taux de mise à jour des dimensions de crop
+
+# Configuration de l'interface
+interface:
+  # Fenêtre principale
+  window_width: 900
+  window_height: 600
+  window_title: "SILLDA"
+  
+  # Webcam
+  webcam_width: 640
+  webcam_height: 480
+  webcam_fps: 30
+  
+  # Menu latéral
+  menu_width: 250
+  menu_animation_duration: 300  # Durée de l'animation en ms
+  
+  # Chemins des ressources
+  style_sheet_path: "Interface/Ressources/QSS/style.qss"
+
+# Configuration générale
+general:
+  # Chemins de base
+  data_path: "./data"
+  models_path: "./models"
+  logs_path: "./experiments/logs"
+  results_path: "./experiments/results"
+  
+  # Logging
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  extended_logging: false
+  
+  # Performance
+  num_threads: 4
+  use_multiprocessing: false
+

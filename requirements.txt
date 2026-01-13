@@ -1,0 +1,54 @@
+# SILLDA - Dépendances Python
+# Installation: pip install -r requirements.txt
+
+# Deep Learning
+tensorflow==2.11.0
+keras==2.11.0
+h5py==3.8.0
+
+# Vision par ordinateur
+opencv-python==4.11.0.86
+dlib==19.24.6
+scikit-image==0.19.3
+imageio==2.31.2
+pillow==9.5.0
+
+# Traitement audio
+pyaudio==0.2.14
+soundfile==0.13.1
+speechrecognition==3.9.0
+# RealtimeSTT - installer séparément si nécessaire
+# pip install RealtimeSTT
+
+# Interface graphique
+PySide6==6.5.3
+PySide6-Addons==6.5.3
+PySide6-Essentials==6.5.3
+
+# Traitement de données
+numpy==1.21.6
+scipy==1.7.3
+pandas>=1.3.0
+scikit-learn==1.0.2
+
+# Utilitaires
+pyyaml==6.0.1
+rich>=2.0.0
+pyautogui>=0.9.0
+
+# Développement et tests (optionnel)
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=22.0.0
+flake8>=5.0.0
+
+# Jupyter (pour les notebooks)
+jupyter>=1.0.0
+matplotlib>=3.5.0
+ipykernel>=6.0.0
+
+# Note: Certaines dépendances peuvent nécessiter des bibliothèques système
+# - dlib nécessite cmake et un compilateur C++
+# - pyaudio nécessite portaudio (sur Linux: sudo apt-get install portaudio19-dev)
+# - opencv-python peut nécessiter des bibliothèques système supplémentaires
+

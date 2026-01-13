@@ -1,0 +1,150 @@
+# Configuration pour l'entraînement des modèles SILLDA
+
+# Configuration générale de l'entraînement
+training:
+  # Paramètres de base
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.0001
+  optimizer: "adam"  # adam, sgd, rmsprop
+  
+  # Stratégie d'apprentissage
+  learning_rate_schedule:
+    type: "exponential_decay"  # constant, exponential_decay, cosine_decay
+    decay_rate: 0.95
+    decay_steps: 1000
+  
+  # Validation
+  validation_split: 0.2
+  validation_frequency: 1  # Nombre d'epochs entre chaque validation
+  
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 10
+    min_delta: 0.001
+    monitor: "val_loss"
+    restore_best_weights: true
+  
+  # Checkpoints
+  checkpoint:
+    enabled: true
+    save_best_only: true
+    monitor: "val_loss"
+    save_frequency: 1  # Sauvegarder tous les N epochs
+    checkpoint_dir: "./models/trained/checkpoints"
+
+# Configuration des données
+data:
+  # Chemins
+  train_data_path: "./data/processed/train"
+  val_data_path: "./data/processed/val"
+  test_data_path: "./data/processed/test"
+  
+  # Augmentation de données
+  data_augmentation:
+    enabled: true
+    horizontal_flip: false  # Pas recommandé pour la lecture labiale
+    rotation_range: 5       # Degrés
+    brightness_range: [0.8, 1.2]
+    contrast_range: [0.8, 1.2]
+    noise_std: 0.01
+  
+  # Préprocessing
+  preprocessing:
+    normalize: true
+    normalize_method: "sequence"  # sequence, global
+    resize: true
+    target_size: [46, 140]
+    grayscale: true
+  
+  # Pipeline
+  shuffle: true
+  buffer_size: 1000
+  prefetch: true
+  num_parallel_calls: 4
+
+# Configuration du modèle
+model:
+  # Architecture (identique à model_config.yaml)
+  sequence_length: 75
+  input_height: 46
+  input_width: 140
+  input_channels: 1
+  
+  conv3d_filters: [128, 256, 75]
+  lstm_units: 128
+  dropout_rate: 0.5
+  
+  # Initialisation
+  kernel_initializer_lstm: "orthogonal"
+  kernel_initializer_dense: "he_normal"
+  
+  # Régularisation
+  l2_regularization: 0.0001
+  dropout_rate: 0.5
+
+# Configuration de la perte et métriques
+loss:
+  type: "ctc"  # Connectionist Temporal Classification
+  reduction: "auto"
+  
+metrics:
+  - "accuracy"
+  - "character_error_rate"
+  - "word_error_rate"
+
+# Configuration du matériel
+hardware:
+  use_gpu: true
+  gpu_memory_growth: true
+  mixed_precision: false  # Utiliser float16 pour accélérer
+  
+  # Distribution
+  strategy: "mirrored"  # mirrored, multi_worker, tpu
+
+# Configuration du logging
+logging:
+  # TensorBoard
+  tensorboard:
+    enabled: true
+    log_dir: "./experiments/logs/tensorboard"
+    update_freq: "batch"  # batch, epoch
+    
+  # Métriques à logger
+  log_metrics:
+    - "loss"
+    - "val_loss"
+    - "accuracy"
+    - "character_error_rate"
+    - "word_error_rate"
+  
+  # Fréquence de logging
+  log_frequency: 10  # Nombre de batches entre chaque log
+
+# Configuration de l'évaluation
+evaluation:
+  # Métriques
+  metrics:
+    - "character_error_rate"
+    - "word_error_rate"
+    - "accuracy"
+  
+  # Datasets de test
+  test_datasets:
+    - name: "LRW"
+      path: "./data/test/LRW"
+    - name: "LRS2"
+      path: "./data/test/LRS2"
+
+# Configuration de l'export
+export:
+  # Formats d'export
+  formats:
+    - "saved_model"  # Format TensorFlow SavedModel
+    - "h5"           # Format Keras H5
+    - "tflite"       # Format TensorFlow Lite (pour mobile)
+  
+  # Chemin d'export
+  export_dir: "./models/trained/exported"
+
